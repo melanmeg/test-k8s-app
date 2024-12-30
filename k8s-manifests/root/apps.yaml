@@ -9,7 +9,7 @@ spec:
         repoURL: https://github.com/melanmeg/my-k8s-app
         revision: main
         directories:
-          - path: k8s-manifests/apps/cluster-wide-apps/*
+          - path: k8s-manifests/cluster-wide-apps/*
   template:
     metadata:
       # 各Application が argocd namespace に配置されるため prefix した方が安全
@@ -50,7 +50,7 @@ spec:
   source:
     repoURL: https://github.com/melanmeg/my-k8s-app
     targetRevision: main
-    path: k8s-manifests/apps/cluster-wide-app-resources
+    path: k8s-manifests/cluster-wide-app-resources
   destination:
     server: https://kubernetes.default.svc
     namespace: "cluster-wide-apps"
