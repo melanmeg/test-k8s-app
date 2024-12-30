@@ -8,7 +8,7 @@ spec:
   ports:
     - port: 443
       targetPort: server
-      nodePort: 30041
+      nodePort: 30001
       protocol: TCP
   selector:
     app.kubernetes.io/instance: argocd
