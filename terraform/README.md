@@ -13,3 +13,29 @@ $ gcloud iam workload-identity-pools providers undelete gitlab-pool-provider --w
 $ terraform import google_iam_workload_identity_pool.gitlab_pool projects/my-project-melanmeg/locations/global/workloadIdentityPools/gitlab-pool
 $ terraform import google_iam_workload_identity_pool_provider.github_pool_provider projects/my-project-melanmeg/locations/global/workloadIdentityPools/gitlab-pool/providers/gitlab-pool-provider
 ```
+
+## tfstate 移行
+
+- 下記追記
+```hcl
+terraform {
+  backend "gcs" {
+    bucket  = "my-project-melanmeg-tfstate"
+    prefix  = "my-project-melanmeg/state"
+  }
+}
+```
+
+- 移行
+```bash
+# 初期化
+$ rm -rf .terraform .terraform.lock.hcl terraform.tfstate*
+
+$ terraform init
+  Enter a value: yes
+  # この時点で移行が完了する
+$ terraform plan
+  # 差分が表示されないこと
+
+$ rm -f terraform.tfstate*
+```
