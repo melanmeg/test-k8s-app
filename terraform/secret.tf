@@ -10,6 +10,10 @@ resource "google_secret_manager_secret" "argocd_github_token" {
       }
     }
   }
+
+  depends_on = [
+    google_project_service.enabled_apis["secretmanager.googleapis.com"]
+  ]
 }
 
 resource "google_secret_manager_secret_version" "argocd_github_token" {
