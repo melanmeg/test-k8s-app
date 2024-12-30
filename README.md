@@ -27,7 +27,17 @@
 # misskey-https  192.168.11.161 8086 30006
 ```
 
-## 構築
-```bash
+## 初期構築
+- terraform から Actions へ移行
+  - ./terraform参照
 
+## 運用
+- Terraform 更新時 Actions で `/apply ci` をコメントして apply
+
+- シークレット追加
+```bash
+$ SECRET_ID=xxxxxx
+$ echo -n $SECRET_ID | gcloud secrets create "${SECRET_ID}-sm" --replication-policy=automatic --data-file=-
+$ gcloud secrets list
+# gcloud secrets delete SECRET_NAME # 削除したいとき
 ```
