@@ -41,7 +41,7 @@ jobs:
 
       - uses: google-github-actions/auth@v2
         with:
-          project_id: ${{ env.PROJECT_ID }}
+          service_account: ${{ env.SERVICE_ACCOUNT }}
           workload_identity_provider: projects/${{ env.PROJECT_NUMBER }}/locations/global/workloadIdentityPools/${{ env.WORKLOAD_IDENTITY_POOL }}/providers/${{ env.WORKLOAD_IDENTITY_POOL_PROVIDER }}
 
       - uses: hashicorp/setup-terraform@v3
