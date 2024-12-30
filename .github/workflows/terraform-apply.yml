@@ -2,8 +2,8 @@ name: "terraform-apply"
 
 on:
   workflow_dispatch:
-  issue_comment:
-    types: [created]
+  # issue_comment:
+  #   types: [created]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
