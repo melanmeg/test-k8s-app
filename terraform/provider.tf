@@ -9,6 +9,10 @@ terraform {
       version = "1.1.1"
     }
   }
+  backend "gcs" {
+    bucket  = "my-project-melanmeg-tfstate"
+    prefix  = "my-project-melanmeg/state"
+  }
 }
 
 provider "google" {

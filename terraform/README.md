@@ -29,7 +29,7 @@ terraform {
 - 移行
 ```bash
 # 初期化
-$ rm -rf .terraform .terraform.lock.hcl terraform.tfstate*
+$ rm -rf .terraform .terraform.lock.hcl
 
 $ terraform init
   Enter a value: yes
