@@ -10,8 +10,8 @@ $ terraform apply
 $ gcloud iam workload-identity-pools undelete gitlab-pool --location global --project my-project-melanmeg
 $ gcloud iam workload-identity-pools providers undelete gitlab-pool-provider --workload-identity-pool gitlab-pool --location global --project my-project-melanmeg
 # もし依存関係でエラーが起こった場合は、先にterraform applyしてから再度試す。
-$ terraform import google_iam_workload_identity_pool.gitlab_pool projects/my-project-melanmeg/locations/global/workloadIdentityPools/gitlab-pool
-$ terraform import google_iam_workload_identity_pool_provider.github_pool_provider projects/my-project-melanmeg/locations/global/workloadIdentityPools/gitlab-pool/providers/gitlab-pool-provider
+$ terraform import google_iam_workload_identity_pool.github_pool projects/my-project-melanmeg/locations/global/workloadIdentityPools/github-pool
+$ terraform import google_iam_workload_identity_pool_provider.github_pool_provider projects/my-project-melanmeg/locations/global/workloadIdentityPools/github-pool/providers/github-pool-provider
 ```
 
 ## tfstate 移行
