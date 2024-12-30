@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/melanmeg/my-app-k8s-2
+        repoURL: https://github.com/melanmeg/my-k8s-app
         revision: main
         directories:
           - path: k8s-manifests/cluster-wide-apps/*
@@ -18,7 +18,7 @@ spec:
     spec:
       project: cluster-wide-apps
       source:
-        repoURL: https://github.com/melanmeg/my-app-k8s-2
+        repoURL: https://github.com/melanmeg/my-k8s-app
         targetRevision: main
         path: "{{path}}"
       destination:
@@ -48,7 +48,7 @@ metadata:
 spec:
   project: argocd-root
   source:
-    repoURL: https://github.com/melanmeg/my-app-k8s-2
+    repoURL: https://github.com/melanmeg/my-k8s-app
     targetRevision: main
     path: k8s-manifests/cluster-wide-app-resources
   destination:
