@@ -25,6 +25,7 @@
 # longhorn       192.168.11.161 8084 30004
 # misskey-http   192.168.11.161 8085 30005
 # misskey-https  192.168.11.161 8086 30006
+# argocd-test    192.168.11.161 443  30007
 ```
 
 ## 初期構築
@@ -41,3 +42,8 @@ $ echo -n $SECRET_ID | gcloud secrets create "${SECRET_ID}-sm" --replication-pol
 $ gcloud secrets list
 # gcloud secrets delete SECRET_NAME # 削除したいとき
 ```
+
+# ※重要 SSO時のキャッシュについて
+
+- Cloudflareのキャッシュルール(all_cache)があるとSSOの挙動に影響がでる。
+- Cloudflareのキャッシュルールは一旦、今後作らない方針とする
