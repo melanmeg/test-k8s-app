@@ -22,15 +22,34 @@ metadata:
   namespace: argocd
 data:
   kustomize.buildOptions: --enable-helm
+# ---
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: argocd-secret
+#   namespace: argocd
+#   labels:
+#     app.kubernetes.io/name: argocd-secret
+#     app.kubernetes.io/part-of: argocd
+# type: Opaque
+# data:
+#   dex.github.clientSecret: ""
 ---
-apiVersion: v1
-kind: Secret
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
 metadata:
-  name: argocd-secret
+  name: argocd-externalsecret
   namespace: argocd
-  labels:
-    app.kubernetes.io/name: argocd-secret
-    app.kubernetes.io/part-of: argocd
-type: Opaque
-data:
-  dex.github.clientSecret: ""
+spec:
+  refreshInterval: 1h
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: secretstore-gcp-sm
+  target:
+    name: argocd-github-secret
+    creationPolicy: Owner
+  data:
+    - secretKey: argocd-github-base64
+      remoteRef:
+        key: argocd-github-base64-secret-sm
+        version: latest
