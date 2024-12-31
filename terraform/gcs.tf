@@ -22,7 +22,7 @@ resource "google_storage_bucket" "tfstate_bucket" {
   }
 }
 
-resource "google_storage_bucket" "tfstate_bucket" {
+resource "google_storage_bucket" "sample_bucket" {
   project       = local.project_id
   name          = "${local.project_id}-tfstate-hogehoge"
   location      = local.region
