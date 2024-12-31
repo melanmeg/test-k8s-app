@@ -38,10 +38,12 @@
 
 - シークレット追加
 ```bash
-$ SECRET_ID=xxxxxx
-$ echo -n $SECRET_ID | gcloud secrets create "${SECRET_ID}-sm" --replication-policy=automatic --data-file=-
-$ gcloud secrets list
-# gcloud secrets delete SECRET_NAME # 削除したいとき
+$ cd terraform
+$ SECRET_DATA=xxxx && \
+  SECRET_ID=xxxx && \
+  echo -n $SECRET_DATA | gcloud secrets create "${SECRET_ID}-sm" --replication-policy=automatic --data-file=- && \
+  gcloud secrets list
+# gcloud secrets delete SECRET_NAME --quiet # 削除したい時
 ```
 
 # ※重要 SSO時のキャッシュについて
