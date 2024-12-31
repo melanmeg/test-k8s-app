@@ -14,14 +14,14 @@ spec:
   selector:
     app.kubernetes.io/instance: argocd
     app.kubernetes.io/name: argocd-server
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argocd-cm
-  namespace: argocd
-data:
-  kustomize.buildOptions: --enable-helm
+# ---
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: argocd-cm
+#   namespace: argocd
+# data:
+#   kustomize.buildOptions: --enable-helm
 # ---
 # apiVersion: v1
 # kind: Secret
@@ -34,22 +34,22 @@ data:
 # type: Opaque
 # data:
 #   dex.github.clientSecret: ""
----
-apiVersion: external-secrets.io/v1beta1
-kind: ExternalSecret
-metadata:
-  name: argocd-externalsecret
-  namespace: argocd
-spec:
-  refreshInterval: 1h
-  secretStoreRef:
-    kind: ClusterSecretStore
-    name: secretstore-gcp-sm
-  target:
-    name: argocd-github-secret
-    creationPolicy: Owner
-  data:
-    - secretKey: argocd-github-base64
-      remoteRef:
-        key: argocd-github-base64-secret-sm
-        version: latest
+# ---
+# apiVersion: external-secrets.io/v1beta1
+# kind: ExternalSecret
+# metadata:
+#   name: argocd-externalsecret
+#   namespace: argocd
+# spec:
+#   refreshInterval: 1h
+#   secretStoreRef:
+#     kind: ClusterSecretStore
+#     name: secretstore-gcp-sm
+#   target:
+#     name: argocd-github-secret
+#     creationPolicy: Owner
+#   data:
+#     - secretKey: argocd-github-base64
+#       remoteRef:
+#         key: argocd-github-base64-secret-sm
+#         version: latest
