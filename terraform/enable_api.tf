@@ -7,7 +7,7 @@ resource "google_project_service" "enabled_apis" {
     "secretmanager.googleapis.com",
     "storage.googleapis.com",
   ])
-  project = "my-project-melanmeg"
+  project = local.project_id
   service = each.key
   disable_on_destroy = true
 }
