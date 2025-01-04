@@ -17,7 +17,6 @@ data:
           clientID: $dex.github.clientId
           clientSecret: $dex.github.clientSecret
           scopes:
-          - openid
           - profile
           - email
           - groups
