@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: argocd-rbac-cm
     app.kubernetes.io/part-of: argocd
 data:
-  policy.default: "role:admin"
+  policy.default: "role:readonly"
   scopes: "[openid, profile, groups, email]"
   policy.csv: |
-    g, naoya05280708@gmail.com, role:readonly
+    g, naoya05280708@gmail.com, role:admin
