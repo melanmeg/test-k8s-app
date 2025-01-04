@@ -6,12 +6,14 @@ namespace: argocd
 resources:
   - ./argocd-lb.yaml
 
+patchesStrategicMerge:
+  - argocd-cm.yaml
 # patches:
 #   - path: ./argocd-cm.yaml
 #   - path: ./argocd-secret.yaml
 
-patches:
-  - target:
-      kind: ConfigMap
-      name: argocd-cm
-    path: ./argocd-cm.yaml
+# patches:
+#   - target:
+#       kind: ConfigMap
+#       name: argocd-cm
+#     path: ./argocd-cm.yaml
