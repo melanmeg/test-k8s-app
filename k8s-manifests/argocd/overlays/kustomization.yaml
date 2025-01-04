@@ -7,8 +7,8 @@ resources:
   - ./namespace.yaml
   - ../base
   - ./argocd-lb.yaml
+  - ./argocd-secret.yaml
 
 patches:
   - path: ./argocd-cm.yaml
   - path: ./argocd-rbac-cm.yaml
-  - path: ./argocd-secret.yaml
