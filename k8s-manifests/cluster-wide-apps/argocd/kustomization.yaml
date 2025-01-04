@@ -5,8 +5,8 @@ namespace: argocd
 # resources:
 #   - ./argocd-lb.yaml
 
-patches:
-  - path: ./argocd-cm.yaml
+# patches:
+#   - path: ./argocd-cm.yaml
 #   - path: ./argocd-secret.yaml
 
 patches:
