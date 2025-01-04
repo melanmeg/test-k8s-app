@@ -9,8 +9,8 @@ patches:
   - path: ./argocd-cm.yaml
 #   - path: ./argocd-secret.yaml
 
-# patches:
-#   - target:
-#       kind: ConfigMap
-#       name: argocd-cm
-#     path: ./argocd-cm.yaml
+patches:
+  - target:
+      kind: ConfigMap
+      name: argocd-cm
+    path: ./argocd-cm.yaml
