@@ -10,6 +10,15 @@ spec:
       app: argocd-redis-ha-haproxy
   template:
     spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: argocd-redis-ha-haproxy
+              topologyKey: kubernetes.io/hostname
       tolerations:
         - key: "node-role.kubernetes.io/control-plane"
           operator: "Exists"
