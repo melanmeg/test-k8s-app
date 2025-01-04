@@ -25,3 +25,11 @@ spec:
 # type: Opaque
 # data:
 #   dex.github.clientSecret: ""
+---
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: argocd-secret
+  namespace: argocd
+spec:
+  itemPath: "vaults/my-vault/items/argocd"
