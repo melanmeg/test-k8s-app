@@ -33,20 +33,7 @@
 - terraform から Actions へ移行
   - ./terraform参照
 
-## 運用
-- Terraform 更新時 Actions で `/apply ci` をコメントして apply
-
-- シークレット追加
-```bash
-$ cd terraform
-$ SECRET_DATA=xxxx && \
-  SECRET_ID=xxxx && \
-  echo -n $SECRET_DATA | gcloud secrets create "${SECRET_ID}-sm" --replication-policy=automatic --data-file=- && \
-  gcloud secrets list
-# gcloud secrets delete SECRET_NAME --quiet # 削除したい時
-```
-
-# ※重要 SSO時のキャッシュについて
+## ※重要 SSO時のキャッシュについて
 
 - Cloudflareのキャッシュルール(all_cache)があるとSSOの挙動に影響がでる。
 - Cloudflareのキャッシュルールは一旦、今後作らない方針とする
