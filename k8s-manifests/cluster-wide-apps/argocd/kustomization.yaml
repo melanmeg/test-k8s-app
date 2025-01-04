@@ -15,4 +15,4 @@ patches:
       kind: ConfigMap
       name: argocd-cm
       namespace: argocd
-    path: argocd-cm.yaml
+    path: ./argocd-cm.yaml
