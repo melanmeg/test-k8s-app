@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: external-secrets-sa
-  namespace: external-secrets
-  annotations:
-    iam.gke.io/gcp-service-account: external-secrets@wip-project-melanmeg.iam.gserviceaccount.com
