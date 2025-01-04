@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: argocd-redis-ha-haproxy
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: argocd-redis-ha-haproxy
@@ -38,10 +38,3 @@ spec:
             limits:
               cpu: 100m
               memory: 64Mi
-status:
-  availableReplicas: 1
-  observedGeneration: 2
-  readyReplicas: 1
-  replicas: 2
-  unavailableReplicas: 1
-  updatedReplicas: 1
