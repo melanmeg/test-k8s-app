@@ -11,4 +11,8 @@ resources:
 #   - path: ./argocd-secret.yaml
 
 patches:
-  - path: argocd-cm.yaml
+  - target:
+      kind: ConfigMap
+      name: argocd-cm
+      namespace: argocd
+    path: argocd-cm.yaml
