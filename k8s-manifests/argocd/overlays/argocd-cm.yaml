@@ -21,3 +21,4 @@ data:
           - profile
           - email
           - groups
+          getUserInfo: true
