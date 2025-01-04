@@ -67,3 +67,42 @@ spec:
         duration: 5s
         factor: 2
         maxDuration: 2m
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argocd-resources
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/melanmeg/my-k8s-app
+        revision: main
+        directories:
+          - path: k8s-manifests/argocd/overlays
+  template:
+    metadata:
+      name: "{{path.basenameNormalized}}"
+      namespace: argocd
+    spec:
+      project: argocd-resources
+      source:
+        repoURL: https://github.com/melanmeg/my-k8s-app
+        targetRevision: main
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true
+        syncOptions:
+          - CreateNamespace=true
+        retry:
+          limit: -1
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 2m
