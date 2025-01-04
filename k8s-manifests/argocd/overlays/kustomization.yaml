@@ -12,4 +12,4 @@ resources:
 patches:
   - path: ./argocd-cm.yaml
   - path: ./argocd-rbac-cm.yaml
-  - path: ./argocd-redis-ha-haproxy.yaml
+  - path: ./node-affinity-patch/argocd-redis-ha-haproxy.yaml
