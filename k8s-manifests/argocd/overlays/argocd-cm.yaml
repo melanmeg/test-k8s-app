@@ -16,8 +16,5 @@ data:
         config:
           clientID: $dex.github.clientId
           clientSecret: $dex.github.clientSecret
-          scopes:
-          - openid
-          - profile
-          - email
-          - groups
+  oidc.config: |
+    requestedScopes: ["openid", "profile", "email", "groups"]
