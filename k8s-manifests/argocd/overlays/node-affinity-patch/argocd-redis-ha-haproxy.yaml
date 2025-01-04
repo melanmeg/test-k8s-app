@@ -18,7 +18,7 @@ spec:
               labelSelector:
                 matchLabels:
                   app.kubernetes.io/name: argocd-redis-ha-haproxy
-              topologyKey: kubernetes.io/hostname
+              topologyKey: node-role.kubernetes.io/worker
       tolerations:
         - key: "node-role.kubernetes.io/control-plane"
           operator: "Exists"
