@@ -110,6 +110,46 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
+  name: misskey-apps
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/melanmeg/my-k8s-app
+        revision: main
+        directories:
+          - path: k8s-manifests/apps/misskey
+  template:
+    metadata:
+      name: "{{path.basenameNormalized}}"
+      namespace: argocd
+    spec:
+      project: misskey
+      source:
+        repoURL: https://github.com/melanmeg/my-k8s-app
+        targetRevision: main
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: misskey
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true
+        syncOptions:
+          - CreateNamespace=true
+          - Replace=true
+        retry:
+          limit: -1
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 2m
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
   name: twicas-monitoring-apps
   namespace: argocd
 spec:
