@@ -75,7 +75,7 @@ spec:
           # Number of replicas for the write
           replicas: 3
           persistence:
-            storageClass: nfs-share
+            storageClass: my-longhorn-sc
             size: 10Gi
 
           # Enable environment variables in config file
@@ -99,7 +99,7 @@ spec:
           # Number of replicas for the read
           replicas: 3
           persistence:
-            storageClass: nfs-share
+            storageClass: my-longhorn-sc
             size: 10Gi
 
           # Enable environment variables in config file
