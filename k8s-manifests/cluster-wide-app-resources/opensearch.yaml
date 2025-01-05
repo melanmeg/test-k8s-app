@@ -106,8 +106,13 @@ spec:
               replicas: 3
               diskSize: "10Gi"
               roles:
-                - "cluster_manager"
+                - "master"
                 - "data"
+              persistence:
+                pvc:
+                  storageClass: my-longhorn-sc
+                  accessModes:
+                  - ReadWriteOnce
               resources:
                 requests:
                   memory: "2Gi"
