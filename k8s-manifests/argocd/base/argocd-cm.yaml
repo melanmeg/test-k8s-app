@@ -18,3 +18,10 @@ data:
   # be between 3 and 4 minutes. Disabled when the value is 0, defaults to 0.
   timeout.reconciliation.jitter: 15s
   admin.enabled: "false"
+  resource.exclusions: |
+    - apiGroups:
+      - cilium.io
+      kinds:
+      - CiliumIdentity
+      clusters:
+      - "*"
