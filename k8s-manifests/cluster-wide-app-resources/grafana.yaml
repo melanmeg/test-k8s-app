@@ -1,3 +1,11 @@
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: grafana-secret
+  namespace: grafana
+spec:
+  itemPath: "vaults/my-vault/items/grafana"
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -28,8 +36,13 @@ spec:
     helm:
       releaseName: grafana
       values: |
-        adminUser: grafana
-        adminPassword: grafana
+        adminUser: admin
+
+        admin:
+          existingSecret: "grafana-secret"
+          userKey: admin-user
+          passwordKey: admin-password
+
         replicas: 3
 
         serviceMonitor:
