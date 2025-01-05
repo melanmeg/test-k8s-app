@@ -71,7 +71,9 @@ spec:
           subPath: /data
 
           buckets:
-            - name: k8s-longhorn
+            - name: k8s-loki
+            - name: k8s-tempo
+            - name: k8s-pyroscope
 
           metrics:
             enabled: false
