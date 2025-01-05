@@ -40,10 +40,10 @@ spec:
               cpu: "250m"
           volumeMounts:
             - name: postgres-storage
-              mountPath: /var/lib/postgresql/data/pgdata # サブディレクトリを指定
+              mountPath: /var/lib/postgresql/data
           env:
             - name: PGDATA
-              value: /var/lib/postgresql/data/pgdata # PGDATA環境変数を指定
+              value: /var/lib/postgresql/data/pgdata/data
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
