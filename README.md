@@ -29,10 +29,6 @@
 # misskey-https      192.168.11.161 8086 30008
 ```
 
-## 初期構築
-- terraform から Actions へ移行
-  - ./terraform参照
-
 ## ※重要 SSO時のキャッシュについて
 
 - Cloudflareのキャッシュルール(all_cache)があるとSSOの挙動に影響がでる。
