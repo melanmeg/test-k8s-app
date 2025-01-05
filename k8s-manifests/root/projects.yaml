@@ -26,6 +26,12 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: "tenant-1"
       server: https://kubernetes.default.svc
+    - namespace: "logging"
+      server: https://kubernetes.default.svc
+    - namespace: "grafana"
+      server: https://kubernetes.default.svc
+    - namespace: "opensearch"
+      server: https://kubernetes.default.svc
   clusterResourceWhitelist:
     - group: "*"
       kind: "*"
