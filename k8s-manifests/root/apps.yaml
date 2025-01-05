@@ -115,10 +115,10 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/melanmeg/my-app-k8s-2
+        repoURL: https://github.com/melanmeg/my-k8s-app
         revision: main
         directories:
-          - path: k8s-manifests/apps/myapp/twicas-monitoring
+          - path: k8s-manifests/apps/twicas-monitoring
   template:
     metadata:
       name: "{{path.basenameNormalized}}"
@@ -126,7 +126,7 @@ spec:
     spec:
       project: twicas-monitoring
       source:
-        repoURL: https://github.com/melanmeg/my-app-k8s-2
+        repoURL: https://github.com/melanmeg/my-k8s-app
         targetRevision: main
         path: "{{path}}"
       destination:
