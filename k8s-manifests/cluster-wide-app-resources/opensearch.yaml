@@ -93,6 +93,8 @@ spec:
     targetRevision: 2.7.0
     helm:
       releaseName: opensearch-operaotr
+      values: |
+        installCRDs: true
   destination:
     server: https://kubernetes.default.svc
     namespace: opensearch
