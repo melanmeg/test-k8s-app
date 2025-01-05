@@ -43,7 +43,7 @@ spec:
       releaseName: longhorn
       values: |
         defaultSettings:
-          backup-target: nfs://192.168.11.12@/mnt/nfsshare/k8s/share
+          backupTarget: nfs://192.168.11.12:/mnt/nfsshare/k8s/share
           # When this setting is disabled, Longhorn creates a default disk on each node that is added to the cluster.
           createDefaultDiskLabeledNodes: true
           defaultDataPath: /mnt/longhorn-xfs/
