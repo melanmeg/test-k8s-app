@@ -52,3 +52,12 @@ $ helm template opensearch-cluster opensearch-operator/opensearch-cluster \
   --kube-version 1.30.4 \
   -f values.yaml > manifest.yaml
 ```
+
+```yaml
+# 以下を opensearch-cluster.yaml に追記
+spec:
+  security:
+    config:
+      adminCredentialsSecret:
+        name: opensearch-secret
+```
