@@ -8,4 +8,4 @@ resources:
   - opensearch-operator.yaml
   - secret.yaml
   - service.yaml
-  - opensearch-cluster.yaml
+  # - opensearch-cluster.yaml

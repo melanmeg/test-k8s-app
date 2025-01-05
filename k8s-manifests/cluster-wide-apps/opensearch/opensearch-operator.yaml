@@ -13,8 +13,8 @@ spec:
       releaseName: opensearch-operaotr
       values: |
         installCRDs: true
-    kustomize:
-      enableHelm: true
+    # kustomize:
+    #   enableHelm: true
   destination:
     server: https://kubernetes.default.svc
     namespace: opensearch
