@@ -5,7 +5,7 @@ namespace: opensearch
 
 resources:
   - namespace.yaml
-  - opensearch-operator.yaml
   - secret.yaml
   - service.yaml
-  # - opensearch-cluster.yaml
+  - opensearch-operator.yaml
+  - opensearch-cluster.yaml
