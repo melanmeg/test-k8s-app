@@ -1,42 +1,42 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: longhorn-ui
-  namespace: longhorn-system
-spec:
-  type: NodePort
-  ports:
-    - port: 80
-      targetPort: http
-      nodePort: 30006
-      protocol: TCP
-  selector:
-    app: longhorn-ui
----
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: my-longhorn-sc
-provisioner: driver.longhorn.io
-allowVolumeExpansion: true
-reclaimPolicy: Delete
-volumeBindingMode: Immediate
-parameters:
-  numberOfReplicas: "3"
-  replicaAutoBalance: "best-effort" # Replica Auto Balance
-  staleReplicaTimeout: "1440" # 24 hours in minutes
-  fromBackup: ""
-  fsType: ext4
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: longhorn-default-setting
-  namespace: longhorn-system
-data:
-  default-setting.yaml: |-
-    backup-target: nfs://192.168.11.12:/mnt/nfsshare/k8s/share
----
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: longhorn-ui
+#   namespace: longhorn-system
+# spec:
+#   type: NodePort
+#   ports:
+#     - port: 80
+#       targetPort: http
+#       nodePort: 30006
+#       protocol: TCP
+#   selector:
+#     app: longhorn-ui
+# ---
+# apiVersion: storage.k8s.io/v1
+# kind: StorageClass
+# metadata:
+#   name: my-longhorn-sc
+# provisioner: driver.longhorn.io
+# allowVolumeExpansion: true
+# reclaimPolicy: Delete
+# volumeBindingMode: Immediate
+# parameters:
+#   numberOfReplicas: "3"
+#   replicaAutoBalance: "best-effort" # Replica Auto Balance
+#   staleReplicaTimeout: "1440" # 24 hours in minutes
+#   fromBackup: ""
+#   fsType: ext4
+# ---
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: longhorn-default-setting
+#   namespace: longhorn-system
+# data:
+#   default-setting.yaml: |-
+#     backup-target: nfs://192.168.11.12:/mnt/nfsshare/k8s/share
+# ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
