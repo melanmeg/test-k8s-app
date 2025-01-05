@@ -24,6 +24,8 @@ spec:
       server: https://kubernetes.default.svc
     - namespace: "minio-operator"
       server: https://kubernetes.default.svc
+    - namespace: "tenant-1"
+      server: https://kubernetes.default.svc
   clusterResourceWhitelist:
     - group: "*"
       kind: "*"

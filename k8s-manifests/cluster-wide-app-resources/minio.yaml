@@ -12,7 +12,7 @@
 #       protocol: TCP
 #   selector:
 #     v1.min.io/tenant: minio-tenant-1
-# ---
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -26,10 +26,65 @@ spec:
     targetRevision: 6.0.4
     helm:
       releaseName: minio-operator
-      values:
   destination:
     server: https://kubernetes.default.svc
     namespace: minio-operator
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minio-tenant-1
+  namespace: argocd
+spec:
+  project: cluster-wide-apps
+  source:
+    chart: tenant
+    repoURL: https://operator.min.io
+    targetRevision: 6.0.4
+    helm:
+      releaseName: minio-tenant-1
+      values: |
+        tenant:
+          name: minio-tenant-1
+
+          configuration:
+            name: myminio-env-configuration
+          configSecret:
+            name: myminio-env-configuration
+            accessKey: minio
+            secretKey: minio123
+
+          pools:
+            - servers: 4
+              name: pool-0
+              volumesPerServer: 4
+              size: 2Gi
+              storageClassName: directpv-min-io
+
+          mountPath: /export
+          subPath: /data
+
+          buckets:
+            - name: k8s-longhorn
+
+          metrics:
+            enabled: false
+            port: 9000
+            protocol: http
+
+          certificate:
+            requestAutoCert: false
+
+          prometheusOperator: false
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: tenant-1
   syncPolicy:
     automated:
       prune: true
