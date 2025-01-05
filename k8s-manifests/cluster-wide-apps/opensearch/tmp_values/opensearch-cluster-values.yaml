@@ -25,3 +25,7 @@ cluster:
         limits:
           memory: "4Gi"
           cpu: "1000m"
+users:
+  - name: "admin"
+    secretName: "opensearch-secret"
+    secretKey: "password"
