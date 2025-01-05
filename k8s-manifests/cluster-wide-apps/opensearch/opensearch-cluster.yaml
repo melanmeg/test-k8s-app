@@ -51,26 +51,3 @@ spec:
         name: opensearch-secret
       securityConfigSecret:
         name: opensearch-securityconfig-secret
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: opensearch-securityconfig-secret
-  namespace: opensearch
-type: Opaque
-stringData:
-  action_groups.yml: |-
-    _meta:
-      type: "actiongroups"
-      config_version: 2
-  internal_users.yml: |-
-    _meta:
-      type: "internalusers"
-      config_version: 2
-    admin:
-      # python -c 'import bcrypt; print(bcrypt.hashpw("admin123".encode("utf-8"), bcrypt.gensalt(12, prefix=b"2a")).decode("utf-8"))'
-      hash: "$2a$12$xiEOIfpzZb2enhR53p.Wm.tJZ2lS25AkJPflpXtfIOjuUpliD7JZK"
-      reserved: true
-      backend_roles:
-      - "admin"
-      description: "Demo admin user"
