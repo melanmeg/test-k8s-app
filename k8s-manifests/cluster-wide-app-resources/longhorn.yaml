@@ -11,6 +11,30 @@ spec:
     targetRevision: 1.7.2
     helm:
       releaseName: longhorn
+      values: |
+        defaultSettings:
+          # When this setting is disabled, Longhorn creates a default disk on each node that is added to the cluster.
+          createDefaultDiskLabeledNodes: true
+          defaultDataPath: /mnt/longhorn-xfs/
+          replicaSoftAntiAffinity: true
+          storageOverProvisioningPercentage: 1000
+          storageMinimalAvailablePercentage: 5
+          upgradeChecker: true
+          # Set the default replica count to “2” to achieve data availability with better disk space usage or less impact to system performance.
+          defaultReplicaCount: 2
+          defaultDataLocality: disabled
+          priorityClass: high-priority
+          autoSalvage: true
+          disableSchedulingOnCordonedNode: false
+          replicaZoneSoftAntiAffinity: true
+          replicaDiskSoftAntiAffinity: true
+          # ref: https://longhorn.github.io/longhorn-tests/manual/pre-release/node/improve-node-failure-handling/
+          nodeDownPodDeletionPolicy: do-nothing
+          guaranteedInstanceManagerCpu: 20
+          orphanAutoDeletion: true
+        preUpgradeChecker:
+          jobEnabled: false
+          upgradeVersionCheck: false
   destination:
     server: https://kubernetes.default.svc
     namespace: longhorn-system
