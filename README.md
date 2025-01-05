@@ -37,10 +37,15 @@
 - Cloudflareのキャッシュルール(all_cache)があるとSSOの挙動に影響がでる。
 - Cloudflareのキャッシュルールは一旦、今後作らない方針とする
 
-## opensearch
+## opensearch template
 
 ```bash
-helm template opensearch-operator opensearch-operator/opensearch-operator \
+$ helm template opensearch-operator opensearch-operator/opensearch-operator \
+  --version 2.7.0 \
+  --kube-version 1.30.4 \
+  -f values.yaml > manifest.yaml
+
+$ helm template opensearch-cluster opensearch-operator/opensearch-cluster \
   --version 2.7.0 \
   --kube-version 1.30.4 \
   -f values.yaml > manifest.yaml
