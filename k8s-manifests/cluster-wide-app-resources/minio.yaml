@@ -21,9 +21,9 @@ metadata:
 spec:
   project: cluster-wide-apps
   source:
-    chart: minio-operator
-    repoURL: https://operator.min.io/
-    targetRevision: v6.0.4
+    chart: operator
+    repoURL: https://operator.min.io
+    targetRevision: 6.0.4
     helm:
       releaseName: minio-operator
       values:
