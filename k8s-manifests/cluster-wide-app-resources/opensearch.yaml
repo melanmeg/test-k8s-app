@@ -1,3 +1,11 @@
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: opensearch-secret
+  namespace: opensearch
+spec:
+  itemPath: "vaults/my-vault/items/opensearch"
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -38,6 +46,9 @@ spec:
     httpPort: 9200
     serviceName: opensearch-cluster-1
     version: 2.3.0
+  passwordFrom:
+    name: opensearch-secret
+    key: password
   dashboards:
     version: 2.3.0
     enable: true
