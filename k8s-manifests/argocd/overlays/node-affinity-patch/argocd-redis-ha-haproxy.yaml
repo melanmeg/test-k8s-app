@@ -39,4 +39,9 @@ spec:
   #             cpu: 100m
   #             memory: 64Mi
 status:
+  availableReplicas: 2
+  observedGeneration: 2
+  readyReplicas: 2
   replicas: 3
+  unavailableReplicas: 1
+  updatedReplicas: 1
