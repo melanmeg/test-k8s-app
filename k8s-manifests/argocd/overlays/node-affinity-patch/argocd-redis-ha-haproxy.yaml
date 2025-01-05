@@ -8,35 +8,35 @@ spec:
   selector:
     matchLabels:
       app: argocd-redis-ha-haproxy
-  template:
-    spec:
-      affinity:
-        podAntiAffinity:
-          preferredDuringSchedulingIgnoredDuringExecution:
-            - weight: 100
-              podAffinityTerm:
-              labelSelector:
-                matchLabels:
-                  app.kubernetes.io/name: argocd-redis-ha-haproxy
-              topologyKey: node-role.kubernetes.io/worker
-      tolerations:
-        - key: "node-role.kubernetes.io/control-plane"
-          operator: "Exists"
-          effect: "NoSchedule"
-      containers:
-        - env:
-            - name: AUTH
-              valueFrom:
-                secretKeyRef:
-                  key: auth
-                  name: argocd-redis
-          name: haproxy
-          resources:
-            requests:
-              cpu: 10m
-              memory: 32Mi
-            limits:
-              cpu: 100m
-              memory: 64Mi
+  # template:
+  #   spec:
+  #     affinity:
+  #       podAntiAffinity:
+  #         preferredDuringSchedulingIgnoredDuringExecution:
+  #           - weight: 100
+  #             podAffinityTerm:
+  #             labelSelector:
+  #               matchLabels:
+  #                 app.kubernetes.io/name: argocd-redis-ha-haproxy
+  #             topologyKey: node-role.kubernetes.io/worker
+  #     tolerations:
+  #       - key: "node-role.kubernetes.io/control-plane"
+  #         operator: "Exists"
+  #         effect: "NoSchedule"
+  #     containers:
+  #       - env:
+  #           - name: AUTH
+  #             valueFrom:
+  #               secretKeyRef:
+  #                 key: auth
+  #                 name: argocd-redis
+  #         name: haproxy
+  #         resources:
+  #           requests:
+  #             cpu: 10m
+  #             memory: 32Mi
+  #           limits:
+  #             cpu: 100m
+  #             memory: 64Mi
 status:
   replicas: 3
