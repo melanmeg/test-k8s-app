@@ -11,7 +11,7 @@ spec:
       nodePort: 30009
       protocol: TCP
   selector:
-    opster.io/opensearch-cluster: opensearch-cluster-1
+    opster.io/opensearch-cluster: opensearch-cluster
 ---
 apiVersion: v1
 kind: Service
@@ -26,4 +26,4 @@ spec:
       nodePort: 30010
       protocol: TCP
   selector:
-    opensearch.cluster.dashboards: opensearch-cluster-1
+    opensearch.cluster.dashboards: opensearch-cluster
