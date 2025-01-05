@@ -54,7 +54,9 @@ spec:
       type: "internalusers"
       config_version: 2
     admin:
-      hash: "$2y$12$lJsHWchewGVcGlYgE3js/O4bkTZynETyXChAITarCHLz8cuaueIyq"   <------- change that hash to your new password hash
+      # htpasswd -nbBC 10 "" admin | tr -d ':\n' | sed 's/$2y/$2a/'
+      # htpasswd -bnBC 12 "" u8vM67Hs8A4tQ6sbUkBd
+      hash: ":$2y$12$ROFx6KcSM4e1axDG6qUkieyktj/.OBJQx96yCrDnKpqnBvkgfVUq."   <------- change that hash to your new password hash
       reserved: true
       backend_roles:
       - "admin"
