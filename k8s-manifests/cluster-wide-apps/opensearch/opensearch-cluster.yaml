@@ -55,7 +55,7 @@ spec:
       config_version: 2
     admin:
       # htpasswd -nbBC 10 "" your_password | tr -d ':\n' | sed 's/$2y/$2a/'
-      hash: "$2a$10$uan2XQLnY1QCt80LeOb.9OkZudbP6wY6/lKSGROs9Tx0LZj8infXe"   <------- change that hash to your new password hash
+      hash: "$2a$10$uan2XQLnY1QCt80LeOb.9OkZudbP6wY6/lKSGROs9Tx0LZj8infXe"
       reserved: true
       backend_roles:
       - "admin"
