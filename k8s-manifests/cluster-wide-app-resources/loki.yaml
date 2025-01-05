@@ -55,7 +55,7 @@ spec:
               ruler: k8s-loki
             type: s3
             s3:
-              endpoint: minio.minio:9000
+              endpoint: minio.tenant-1
               region: eu-west-1
               secretAccessKey: minio123
               accessKeyId: minio
