@@ -38,7 +38,7 @@ spec:
             storageSpec:
               volumeClaimTemplate:
                 spec:
-                  storageClassName: nfs-share
+                  storageClassName: my-longhorn-sc
                   accessModes: ["ReadWriteOnce"]
                   resources:
                     requests:
@@ -56,7 +56,7 @@ spec:
             storage:
               volumeClaimTemplate:
                 spec:
-                  storageClassName: nfs-share
+                  storageClassName: my-longhorn-sc
                   accessModes: ["ReadWriteOnce"]
                   resources:
                     requests:
