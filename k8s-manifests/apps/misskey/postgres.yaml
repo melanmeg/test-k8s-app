@@ -40,14 +40,16 @@ spec:
               cpu: "250m"
           volumeMounts:
             - name: postgres-storage
-              mountPath: /var/lib/postgresql/data
+              mountPath: /var/lib/postgresql/data/postgresql_data
           env:
             - name: PGDATA
-              value: /var/lib/postgresql/data
+              value: /var/lib/postgresql/data/postgresql_data
       volumes:
         - name: postgres-storage
           persistentVolumeClaim:
             claimName: postgres-pvc
+        - name: init-postgresql-data
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
