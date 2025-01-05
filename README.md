@@ -40,6 +40,8 @@
 ## opensearch template
 
 ```bash
+# ref: ./k8s-manifests/cluster-wide-apps/opensearch/tmp_values
+
 $ helm template opensearch-operator opensearch-operator/opensearch-operator \
   --version 2.7.0 \
   --kube-version 1.30.4 \
