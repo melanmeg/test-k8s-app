@@ -1,14 +1,11 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 namespace: opensearch
-# helmCharts:
-#   - name: opensearch-operaotr
-#     repo: https://opensearch-project.github.io/opensearch-k8s-operator
-#     releaseName: opensearch-operaotr
-#     namespace: opensearch
-#     version: 2.7.0
-#     valuesFile: values.yaml
+
 resources:
+  - namespace.yaml
   - operator.yaml
-#   - secret.yaml
-#   - service.yaml
+  - secret.yaml
+  - service.yaml
+  - cluster.yaml

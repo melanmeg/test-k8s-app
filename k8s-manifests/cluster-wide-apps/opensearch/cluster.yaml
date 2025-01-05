@@ -39,6 +39,8 @@ spec:
                 limits:
                   memory: "4Gi"
                   cpu: "1000m"
+    kustomize:
+      enableHelm: true
   destination:
     server: https://kubernetes.default.svc
     namespace: opensearch
