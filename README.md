@@ -29,6 +29,7 @@
 # misskey-https           192.168.11.161 8086 30008
 # opensearch              192.168.11.161 8087 30009
 # opensearch-dashboard    192.168.11.161 8088 30010
+# twicas-monitoring       192.168.11.161 8089 30011
 ```
 
 ## ※重要 SSO時のキャッシュについて
