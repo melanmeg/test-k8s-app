@@ -49,3 +49,13 @@ spec:
     config:
       adminCredentialsSecret:
         name: opensearch-secret
+  internal_users.yml: |-
+    _meta:
+      type: "internalusers"
+      config_version: 2
+    admin:
+      hash: "$2y$12$lJsHWchewGVcGlYgE3js/O4bkTZynETyXChAITarCHLz8cuaueIyq"   <------- change that hash to your new password hash
+      reserved: true
+      backend_roles:
+      - "admin"
+      description: "Demo admin user"

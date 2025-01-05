@@ -9,4 +9,3 @@ resources:
   - service.yaml
   - opensearch-operator.yaml
   - opensearch-cluster.yaml
-  - opensearch-user.yaml
