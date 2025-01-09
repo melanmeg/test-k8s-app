@@ -81,3 +81,5 @@ $ kubectl apply -f cloudflared.yaml
 ```
 
 - ブラウザからトンネルの移行を実施する
+
+- パブリックホストの設定は、ブラウザからのみ
