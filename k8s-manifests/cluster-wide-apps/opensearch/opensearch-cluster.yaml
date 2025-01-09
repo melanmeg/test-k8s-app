@@ -4,7 +4,6 @@ apiVersion: opensearch.opster.io/v1
 kind: OpenSearchCluster
 metadata:
   name: opensearch-cluster
-  namespace: default
 spec:
   initHelper:
     imagePullPolicy: IfNotPresent

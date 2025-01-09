@@ -61,3 +61,23 @@ spec:
       adminCredentialsSecret:
         name: opensearch-secret
 ```
+
+## cloudflared 導入手順
+
+```bash
+$ cloudflared tunnel login
+$ cloudflared tunnel create k8s-tunnel
+$ cloudflared tunnel route dns k8s-tunnel k8s.melanmeg.com
+$ cloudflared tunnel token --cred-file ./credentials.json k8s-tunnel
+
+$ kubectl create secret generic tunnel-credentials \
+  --from-file=credentials.json=credentials.json
+
+$ wget https://raw.githubusercontent.com/cloudflare/argo-tunnel-examples/master/named-tunnel-k8s/app.yaml
+$ wget https://github.com/cloudflare/argo-tunnel-examples/blob/master/named-tunnel-k8s/cloudflared.yaml
+
+# Fix cloudflared.yaml
+$ kubectl apply -f cloudflared.yaml
+```
+
+- ブラウザからトンネルの移行を実施する
