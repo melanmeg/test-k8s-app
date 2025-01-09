@@ -32,7 +32,6 @@ spec:
   ports:
     - port: 3000
       targetPort: 3000
-      nodePort: 30004
       protocol: TCP
   selector:
     app.kubernetes.io/instance: grafana
