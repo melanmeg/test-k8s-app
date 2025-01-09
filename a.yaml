@@ -1,0 +1,35 @@
+service:
+  enabled: true
+  type: ClusterIP
+  port: 80
+  targetPort:
+    3000
+    # targetPort: 4181 To be used with a proxy extraContainer
+  ## Service annotations. Can be templated.
+  portName: service
+  # Adds the appProtocol field to the service. This allows to work with istio protocol selection. Ex: "http" or "tcp"
+  appProtocol: ""
+
+extraExposePorts:
+  []
+  # - name: keycloak
+  #   port: 8080
+  #   targetPort: 8080
+
+## Enable an Specify container in extraContainers. This is meant to allow adding an authentication proxy to a grafana pod
+extraContainers: ""
+# extraContainers: |
+# - name: proxy
+#   image: quay.io/gambol99/keycloak-proxy:latest
+#   args:
+#   - -provider=github
+#   - -client-id=
+#   - -client-secret=
+#   - -github-org=<ORG_NAME>
+#   - -email-domain=*
+#   - -cookie-secret=
+#   - -http-address=http://0.0.0.0:4181
+#   - -upstream-url=http://127.0.0.1:3000
+#   ports:
+#     - name: proxy-web
+#       containerPort: 4181
