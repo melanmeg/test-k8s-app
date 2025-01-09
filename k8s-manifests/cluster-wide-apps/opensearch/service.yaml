@@ -11,17 +11,3 @@ spec:
       protocol: TCP
   selector:
     opster.io/opensearch-cluster: opensearch-cluster
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: opensearch-dashboard-lb
-spec:
-  type: NodePort
-  ports:
-    - port: 5601
-      targetPort: 5601
-      nodePort: 30010
-      protocol: TCP
-  selector:
-    opensearch.cluster.dashboards: opensearch-cluster
