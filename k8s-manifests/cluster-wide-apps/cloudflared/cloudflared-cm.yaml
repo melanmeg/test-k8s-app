@@ -4,13 +4,13 @@ metadata:
   name: cloudflared
 data:
   config.yaml: |
-    tunnel: k8s-tunnel # fix me
+    tunnel: test-k8s-tunnel # fix me
     credentials-file: /etc/cloudflared/creds/credentials.json
     metrics: 0.0.0.0:2000
     no-autoupdate: true
     ingress:
-    - hostname: k8s.melanmeg.com # fix me
+    - hostname: test-k8s.melanmeg.com # fix me
       service: http://web-service:80
-    - hostname: k8s.melanmeg.com # fix me
+    - hostname: test-k8s.melanmeg.com # fix me
       service: hello_world
     - service: http_status:404

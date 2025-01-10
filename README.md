@@ -66,9 +66,9 @@ spec:
 
 ```bash
 $ cloudflared tunnel login
-$ cloudflared tunnel create k8s-tunnel
-$ cloudflared tunnel route dns k8s-tunnel k8s.melanmeg.com
-$ cloudflared tunnel token --cred-file ./credentials.json k8s-tunnel
+$ cloudflared tunnel create test-k8s-tunnel
+$ cloudflared tunnel route dns test-k8s-tunnel test-k8s.melanmeg.com
+$ cloudflared tunnel token --cred-file ./credentials.json test-k8s-tunnel
 
 $ kubectl create secret generic tunnel-credentials \
   --from-file=credentials.json=credentials.json
