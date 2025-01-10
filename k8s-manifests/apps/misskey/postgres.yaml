@@ -8,6 +8,20 @@ data:
   POSTGRES_PASSWORD: bWlzc2tleS1wYXNzd29yZA== # Base64エンコードされた 'misskey-password'
   POSTGRES_DB: bWlzc2tleQ== # Base64エンコードされた 'misskey'
 ---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-init-scripts
+data:
+  init-user-db.sh: |
+    #!/bin/bash
+    set -e
+    psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
+        CREATE USER misskey_user WITH PASSWORD 'misskey-password';
+        CREATE DATABASE misskey;
+        GRANT ALL PRIVILEGES ON DATABASE misskey TO misskey_user;
+    EOSQL
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
