@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/melanmeg/my-k8s-app
+        repoURL: https://github.com/melanmeg/test-k8s-app
         revision: main
         directories:
           - path: k8s-manifests/cluster-wide-apps/*
@@ -18,7 +18,7 @@ spec:
     spec:
       project: cluster-wide-apps
       source:
-        repoURL: https://github.com/melanmeg/my-k8s-app
+        repoURL: https://github.com/melanmeg/test-k8s-app
         targetRevision: main
         path: "{{path}}"
       destination:
@@ -48,7 +48,7 @@ metadata:
 spec:
   project: argocd-root
   source:
-    repoURL: https://github.com/melanmeg/my-k8s-app
+    repoURL: https://github.com/melanmeg/test-k8s-app
     targetRevision: main
     path: k8s-manifests/cluster-wide-app-resources
   destination:
@@ -76,7 +76,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/melanmeg/my-k8s-app
+        repoURL: https://github.com/melanmeg/test-k8s-app
         revision: main
         directories:
           - path: k8s-manifests/argocd/overlays
@@ -87,7 +87,7 @@ spec:
     spec:
       project: argocd-resources
       source:
-        repoURL: https://github.com/melanmeg/my-k8s-app
+        repoURL: https://github.com/melanmeg/test-k8s-app
         targetRevision: main
         path: "{{path}}"
       destination:
@@ -115,7 +115,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/melanmeg/my-k8s-app
+        repoURL: https://github.com/melanmeg/test-k8s-app
         revision: main
         directories:
           - path: k8s-manifests/apps/misskey
@@ -126,7 +126,7 @@ spec:
     spec:
       project: misskey
       source:
-        repoURL: https://github.com/melanmeg/my-k8s-app
+        repoURL: https://github.com/melanmeg/test-k8s-app
         targetRevision: main
         path: "{{path}}"
       destination:
@@ -155,7 +155,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: https://github.com/melanmeg/my-k8s-app
+        repoURL: https://github.com/melanmeg/test-k8s-app
         revision: main
         directories:
           - path: k8s-manifests/apps/twicas-monitoring
@@ -166,7 +166,7 @@ spec:
     spec:
       project: twicas-monitoring
       source:
-        repoURL: https://github.com/melanmeg/my-k8s-app
+        repoURL: https://github.com/melanmeg/test-k8s-app
         targetRevision: main
         path: "{{path}}"
       destination:
