@@ -33,6 +33,8 @@ spec:
     - namespace: "opensearch"
       server: https://kubernetes.default.svc
     - namespace: "cloudflared"
+      server: https://kubernetes.default.sv
+    - namespace: "keda"
       server: https://kubernetes.default.svc
   clusterResourceWhitelist:
     - group: "*"
