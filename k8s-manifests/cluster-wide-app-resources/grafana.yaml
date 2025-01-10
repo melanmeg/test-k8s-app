@@ -19,7 +19,7 @@ spec:
           userKey: admin-user
           passwordKey: admin-password
 
-        replicas: 2
+        replicas: 1
 
         serviceMonitor:
           enabled: true
