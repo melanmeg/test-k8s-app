@@ -103,7 +103,7 @@ spec:
 
         crds:
           additionalAnnotations:
-            argocd.argoproj.io/sync-options: ServerSideApply=true
+            argocd.argoproj.io/sync-options: ServerSideApply=true # Fix scaledjobs.keda.sh CRD is too long.
   destination:
     server: "https://kubernetes.default.svc"
     namespace: keda
