@@ -52,8 +52,8 @@ spec:
         - name: misskey
           image: misskey/misskey:2023.12.0
           env:
-            - name: PGSSLMODE
-              value: require
+            # - name: PGSSLMODE
+            #   value: require
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
