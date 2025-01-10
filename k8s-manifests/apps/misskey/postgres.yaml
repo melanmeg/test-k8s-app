@@ -65,6 +65,9 @@ spec:
         - name: postgres-storage
           persistentVolumeClaim:
             claimName: postgres-pvc
+        - name: init-scripts
+          configMap:
+            name: postgres-init-scripts
         - name: init-postgresql-data
           emptyDir: {}
 ---
