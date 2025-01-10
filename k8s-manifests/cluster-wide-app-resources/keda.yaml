@@ -6,9 +6,9 @@ metadata:
 spec:
   project: cluster-wide-apps
   source:
-    chart: kedacore
+    chart: keda
     repoURL: https://kedacore.github.io/charts
-    targetRevision: 2.16.1
+    targetRevision: 2.16.0
     helm:
       releaseName: keda
   destination:
