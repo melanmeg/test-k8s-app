@@ -4,8 +4,9 @@ metadata:
   name: postgres-secret
 type: Opaque
 data:
-  POSTGRES_USER: cG9zdGdyZXM= # Base64エンコードされた 'postgres'
-  POSTGRES_PASSWORD: cGFzc3dvcmQ= # Base64エンコードされた 'password'
+  POSTGRES_USER: bWlzc2tleS11c2Vy # Base64エンコードされた 'misskey-user'
+  POSTGRES_PASSWORD: bWlzc2tleS1wYXNzd29yZA== # Base64エンコードされた 'misskey-password'
+  POSTGRES_DB: bWlzc2tleQ== # Base64エンコードされた 'misskey'
 ---
 apiVersion: apps/v1
 kind: Deployment
