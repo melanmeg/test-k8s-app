@@ -11,7 +11,6 @@ spec:
     targetRevision: 2.16.1
     helm:
       releaseName: keda
-      values:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: keda
