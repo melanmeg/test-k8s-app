@@ -37,6 +37,8 @@
 - Cloudflareのキャッシュルール(all_cache)があるとSSOの挙動に影響がでる。
 - Cloudflareのキャッシュルールは一旦、今後作らない方針とする
 
+## ※重要 バージョンはすべて最新の１つ手前のマイナーバージョン最新に統一する。
+
 ## opensearch template
 
 ```bash
