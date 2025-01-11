@@ -2,6 +2,12 @@
 
 おうちkubernetesのマニフェストを管理する
 
+## サーバースペック
+| name      | cpu(s) | mem(GiB) | disk(GiB) |
+| --------- | ------ | -------- | --------- |
+| physical1 | 8      | 32       | 500       |
+| physical2 | 16     | 128      | 1000      |
+
 ## ホスト
 
 | hostname | IP             |
