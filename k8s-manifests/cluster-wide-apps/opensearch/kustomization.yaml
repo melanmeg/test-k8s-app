@@ -13,14 +13,14 @@ helmCharts:
   - name: opensearch-operator
     includeCRDs: true
     releaseName: opensearch-operator
-    version: 2.7.0
+    version: 2.6.1
     repo: https://opensearch-project.github.io/opensearch-k8s-operator/
     valuesInline:
       installCRDs: true
   - name: opensearch-cluster
     includeCRDs: true
     releaseName: opensearch-cluster
-    version: 3.0.0
+    version: 2.6.1
     repo: https://opensearch-project.github.io/opensearch-k8s-operator/
     valuesFile: opensearch-cluster-values.yaml
 
