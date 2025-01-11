@@ -1,6 +1,6 @@
 cluster:
   general:
-    serviceName: "opensearch-cluster-1"
+    serviceName: "opensearch-cluster"
   dashboards:
     enable: true
     replicas: 1
