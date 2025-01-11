@@ -7,9 +7,6 @@ resources:
   - namespace.yaml
   - secret.yaml
   - service.yaml
-  # - opensearch-operator.yaml
-  # - opensearch-cluster.yaml
-  # - opensearch-securityconfig-secret.yaml
 
 helmCharts:
   - name: opensearch-operator
@@ -19,3 +16,9 @@ helmCharts:
     repo: https://opensearch-project.github.io/opensearch-k8s-operator/
     valuesInline:
       installCRDs: true
+  - name: opensearch-cluster
+    includeCRDs: true
+    releaseName: opensearch-cluster
+    version: 2.6.1
+    repo: https://opensearch-project.github.io/opensearch-k8s-operator/
+    valuesFile: ./values.yaml
