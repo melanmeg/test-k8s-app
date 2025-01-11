@@ -19,4 +19,9 @@ helmCharts:
     releaseName: opensearch-cluster
     version: 2.6.1
     repo: https://opensearch-project.github.io/opensearch-k8s-operator/
-    valuesFile: opensearch-cluster-values.yaml
+    # valuesFile: opensearch-cluster-values.yaml
+    valuesInline:
+      cluster:
+        nodePools:
+          - component: masters
+            replicas: 1
