@@ -16,3 +16,4 @@ data:
         config:
           clientID: $dex.github.clientId
           clientSecret: $dex.github.clientSecret
+  kustomize.buildOptions: --enable-helm
