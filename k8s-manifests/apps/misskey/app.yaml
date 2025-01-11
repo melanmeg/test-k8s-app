@@ -6,7 +6,7 @@ metadata:
   name: misskey-config
 data:
   default.yml: |
-    url: https://pekoraskey.melanmeg.com/
+    url: https://test-pekoraskey.melanmeg.com/
     port: 3000
     db:
       host: postgres.misskey
@@ -22,7 +22,7 @@ data:
       port: 7700
       apiKey: 'Yl5NDX7ft63MDoSqTsseHxNcToFpTGOC'
       ssl: false
-      index: 'pekoraskey.melanmeg.com'
+      index: 'test-pekoraskey.melanmeg.com'
     id: 'aidx'
     proxyBypassHosts:
       - api.deepl.com
