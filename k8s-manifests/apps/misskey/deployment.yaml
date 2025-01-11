@@ -53,7 +53,7 @@ metadata:
   name: misskey-files
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   storageClassName: my-longhorn-sc
   resources:
     requests:
