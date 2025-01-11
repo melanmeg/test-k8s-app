@@ -3,50 +3,51 @@
 apiVersion: opensearch.opster.io/v1
 kind: OpenSearchCluster
 metadata:
-  name: opensearch-cluster
+  name: my-cluster
 spec:
-  initHelper:
-    imagePullPolicy: IfNotPresent
   general:
-    version: 2.3.0
+    version: 2.14.0
     httpPort: 9200
     vendor: opensearch
-    serviceName: opensearch-cluster
-    setVMMaxMapCount: true
-    drainDataNodes: true
-  dashboards:
-    version: 2.3.0
-    enable: true
-    replicas: 1
-    resources:
-      requests:
-        memory: 1Gi
-        cpu: 500m
-      limits:
-        memory: 1Gi
-        cpu: 500m
-  nodePools:
-    - component: masters
-      replicas: 3
-      diskSize: "30Gi"
-      resources:
-        requests:
-          memory: 2Gi
-          cpu: 500m
-        limits:
-          memory: 2Gi
-          cpu: 500m
-      roles:
-        - master
-        - data
+    serviceName: my-cluster
   security:
-    tls:
-      transport:
-        generate: true
-      http:
-        generate: true
     config:
       adminCredentialsSecret:
         name: opensearch-secret
       securityConfigSecret:
         name: opensearch-securityconfig-secret
+    tls:
+      transport:
+        generate: true
+      http:
+        generate: true
+  dashboards:
+    opensearchCredentialsSecret:
+      name: opensearch-secret
+    version: 2.14.0
+    enable: true
+    replicas: 2
+    resources:
+      requests:
+        memory: "1Gi"
+        cpu: "500m"
+      limits:
+        memory: "1Gi"
+        cpu: "500m"
+  confMgmt:
+    smartScaler: true
+  nodePools:
+    - component: masters
+      replicas: 3
+      diskSize: "30Gi"
+      nodeSelector:
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "500m"
+        limits:
+          memory: "2Gi"
+          cpu: "500m"
+      roles:
+        - "cluster_manager"
+        - "data"
