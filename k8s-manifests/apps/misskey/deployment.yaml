@@ -1,5 +1,5 @@
 # ref: https://qiita.com/arila/items/3c453b7e802639eebdea
-
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -33,16 +33,41 @@ data:
     proxyRemoteFiles: true
     signToActivityPubGet: true
 ---
-apiVersion: apps/v1
-kind: StatefulSet
+apiVersion: v1
+kind: Service
 metadata:
-  name: misskey-statefulset
+  name: misskey-service
+  labels:
+    app: misskey
 spec:
-  serviceName: misskey
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app: misskey
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: misskey-files
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: my-longhorn-sc
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: misskey-deployment
+spec:
+  replicas: 3
   selector:
     matchLabels:
       app: misskey
-  replicas: 1
   template:
     metadata:
       labels:
@@ -89,26 +114,3 @@ spec:
             items:
               - key: default.yml
                 path: default.yml
-  volumeClaimTemplates:
-    - metadata:
-        name: misskey-files
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 20Gi
-        storageClassName: my-longhorn-sc
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: misskey-service
-  labels:
-    app: misskey
-spec:
-  ports:
-    - port: 3000
-      targetPort: 3000
-      protocol: TCP
-  selector:
-    app: misskey

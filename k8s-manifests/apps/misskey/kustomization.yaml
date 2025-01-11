@@ -4,8 +4,8 @@ kind: Kustomization
 namespace: misskey
 
 resources:
-  - nginx.yaml
-  - app.yaml
   - postgres.yaml
   - redis.yaml
   - meilisearch.yaml
+  - nginx.yaml
+  - deployment.yaml
