@@ -20,6 +20,3 @@ helmCharts:
     version: 2.6.1
     repo: https://opensearch-project.github.io/opensearch-k8s-operator/
     valuesFile: opensearch-cluster-values.yaml
-
-patches:
-  - path: opensearch-cluster-patch.yaml
