@@ -1,3 +1,11 @@
+apiVersion: onepassword.com/v1
+kind: OnePasswordItem
+metadata:
+  name: grafana-secret
+  namespace: grafana
+spec:
+  itemPath: "vaults/my-vault/items/grafana"
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
