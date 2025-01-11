@@ -5,8 +5,8 @@ cluster:
   dashboards:
     enable: true
     replicas: 1
-    tls:
-      enable: false
+  tls:
+    enable: false
   nodePools:
     - component: masters
       replicas: 3
