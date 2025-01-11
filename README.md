@@ -39,17 +39,6 @@
 
 ## ※重要 バージョンはすべて最新の１つ手前のマイナーバージョン最新に統一する。
 
-## opensearch template
-
-```yaml
-# 以下を opensearch-cluster.yaml に追記
-spec:
-  security:
-    config:
-      adminCredentialsSecret:
-        name: opensearch-secret
-```
-
 ## cloudflared 導入手順
 
 ```bash

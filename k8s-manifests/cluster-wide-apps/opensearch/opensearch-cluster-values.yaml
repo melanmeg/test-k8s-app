@@ -26,3 +26,6 @@ cluster:
         limits:
           memory: "4Gi"
           cpu: "1000m"
+  security.config:
+    adminCredentialsSecret:
+      name: "opensearch-secret"
