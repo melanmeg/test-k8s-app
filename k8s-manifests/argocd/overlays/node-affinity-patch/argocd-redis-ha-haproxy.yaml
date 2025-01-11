@@ -29,10 +29,3 @@ spec:
             limits:
               cpu: 200m
               memory: 256Mi
-status:
-  availableReplicas: 2
-  observedGeneration: 2
-  readyReplicas: 2
-  replicas: 3
-  unavailableReplicas: 1
-  updatedReplicas: 1
