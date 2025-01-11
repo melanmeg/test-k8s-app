@@ -5,6 +5,9 @@ namespace: opensearch
 
 resources:
   - namespace.yaml
+  - secret.yaml
+  - service.yaml
+  - opensearch-securityconfig-secret.yaml
 
 helmCharts:
   - name: opensearch-operator
