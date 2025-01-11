@@ -9,7 +9,7 @@ cluster:
     enable: false
   nodePools:
     - component: masters
-      replicas: 1
+      replicas: 3
       diskSize: "10Gi"
       roles:
         - "master"

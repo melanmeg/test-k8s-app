@@ -5,6 +5,9 @@ namespace: opensearch
 
 resources:
   - namespace.yaml
+  - secret.yaml
+  - service.yaml
+  - opensearch-securityconfig-secret.yaml
 
 helmCharts:
   - name: opensearch-operator
@@ -19,9 +22,7 @@ helmCharts:
     releaseName: opensearch-cluster
     version: 2.6.1
     repo: https://opensearch-project.github.io/opensearch-k8s-operator/
-    # valuesFile: opensearch-cluster-values.yaml
-    valuesInline:
-      cluster:
-        nodePools:
-          - component: masters
-            replicas: 1
+    valuesFile: opensearch-cluster-values.yaml
+
+patches:
+  - path: opensearch-cluster-patch.yaml
