@@ -13,7 +13,7 @@ helmCharts:
   - name: opensearch-operator
     includeCRDs: true
     releaseName: opensearch-operator
-    version: 2.7.0
+    version: 2.6.1
     repo: https://opensearch-project.github.io/opensearch-k8s-operator/
     valuesInline:
       installCRDs: true
