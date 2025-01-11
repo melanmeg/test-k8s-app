@@ -41,20 +41,6 @@
 
 ## opensearch template
 
-```bash
-# ref: ./k8s-manifests/cluster-wide-apps/opensearch/tmp_values
-
-$ helm template opensearch-operator opensearch-operator/opensearch-operator \
-  --version 2.7.0 \
-  --kube-version 1.30.4 \
-  -f values.yaml > manifest.yaml
-
-$ helm template opensearch-cluster opensearch-operator/opensearch-cluster \
-  --version 2.7.0 \
-  --kube-version 1.30.4 \
-  -f values.yaml > manifest.yaml
-```
-
 ```yaml
 # 以下を opensearch-cluster.yaml に追記
 spec:
