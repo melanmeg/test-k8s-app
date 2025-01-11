@@ -11,34 +11,6 @@ spec:
     targetRevision: 2.6.1
     helm:
       releaseName: opensearch-cluster
-      values: |
-        cluster:
-          general:
-            serviceName: "opensearch-cluster"
-          dashboards:
-            enable: true
-            replicas: 1
-          tls:
-            enable: false
-          nodePools:
-            - component: masters
-              replicas: 3
-              diskSize: "10Gi"
-              roles:
-                - "master"
-                - "data"
-              persistence:
-                pvc:
-                  storageClass: my-longhorn-sc
-                  accessModes:
-                    - ReadWriteOnce
-              resources:
-                requests:
-                  memory: "2Gi"
-                  cpu: "500m"
-                limits:
-                  memory: "4Gi"
-                  cpu: "1000m"
   destination:
     server: https://kubernetes.default.svc
     namespace: opensearch
