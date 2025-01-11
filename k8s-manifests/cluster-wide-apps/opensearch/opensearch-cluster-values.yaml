@@ -1,26 +1,12 @@
 cluster:
   name: "opensearch-cluster"
-
   general:
-    image: docker.io/opensearchproject/opensearch
-    imagePullPolicy: IfNotPresent
-    version: 2.3.0
     serviceName: "opensearch-cluster"
-
   dashboards:
     enable: true
-    image: docker.io/opensearchproject/opensearch-dashboards
-    imagePullPolicy: "IfNotPresent"
-    version: 2.3.0
     replicas: 1
-
   tls:
     enable: false
-
-  initHelper:
-    imagePullPolicy: "IfNotPresent"
-    version: "1.36"
-
   nodePools:
     - component: masters
       replicas: 3
