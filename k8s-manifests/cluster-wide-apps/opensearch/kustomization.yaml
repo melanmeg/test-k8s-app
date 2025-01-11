@@ -8,7 +8,7 @@ resources:
   - secret.yaml
   - service.yaml
   # - opensearch-cluster.yaml
-  - opensearch-securityconfig-secret.yaml
+  # - opensearch-securityconfig-secret.yaml
 
 helmCharts:
   - name: opensearch-operator
