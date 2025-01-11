@@ -53,7 +53,7 @@ metadata:
   name: misskey-files
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: my-longhorn-sc
   resources:
     requests:
@@ -64,7 +64,7 @@ kind: Deployment
 metadata:
   name: misskey-deployment
 spec:
-  replicas: 3
+  replicas: 1 # Only one is supported.
   selector:
     matchLabels:
       app: misskey
