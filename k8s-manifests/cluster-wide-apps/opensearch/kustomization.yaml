@@ -17,12 +17,12 @@ helmCharts:
     repo: https://opensearch-project.github.io/opensearch-k8s-operator/
     valuesInline:
       installCRDs: true
-  - name: opensearch-cluster
-    includeCRDs: true
-    releaseName: opensearch-cluster
-    version: 3.0.0
-    repo: https://opensearch-project.github.io/opensearch-k8s-operator/
-    valuesFile: opensearch-cluster-values.yaml
+  # - name: opensearch-cluster
+  #   includeCRDs: true
+  #   releaseName: opensearch-cluster
+  #   version: 3.0.0
+  #   repo: https://opensearch-project.github.io/opensearch-k8s-operator/
+  #   valuesFile: opensearch-cluster-values.yaml
 
 patches:
   - path: opensearch-cluster-patch.yaml
