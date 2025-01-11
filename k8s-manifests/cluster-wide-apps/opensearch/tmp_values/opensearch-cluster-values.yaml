@@ -1,4 +1,5 @@
 cluster:
+  name: "opensearch-cluster"
   general:
     serviceName: "opensearch-cluster"
   dashboards:
