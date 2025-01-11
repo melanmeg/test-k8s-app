@@ -1,0 +1,52 @@
+# ref: https://github.com/opensearch-project/opensearch-k8s-operator/blob/main/opensearch-operator/examples/2.x/opensearch-cluster-custom-admin-user.yaml
+---
+apiVersion: opensearch.opster.io/v1
+kind: OpenSearchCluster
+metadata:
+  name: opensearch-cluster
+spec:
+  initHelper:
+    imagePullPolicy: IfNotPresent
+  general:
+    version: 2.3.0
+    httpPort: 9200
+    vendor: opensearch
+    serviceName: opensearch-cluster
+    setVMMaxMapCount: true
+    drainDataNodes: true
+  dashboards:
+    version: 2.3.0
+    enable: true
+    replicas: 1
+    resources:
+      requests:
+        memory: 1Gi
+        cpu: 500m
+      limits:
+        memory: 1Gi
+        cpu: 500m
+  nodePools:
+    - component: masters
+      replicas: 3
+      diskSize: "30Gi"
+      resources:
+        requests:
+          memory: 2Gi
+          cpu: 500m
+        limits:
+          memory: 2Gi
+          cpu: 500m
+      roles:
+        - master
+        - data
+  security:
+    tls:
+      transport:
+        generate: true
+      http:
+        generate: true
+    config:
+      adminCredentialsSecret:
+        name: opensearch-secret
+      securityConfigSecret:
+        name: opensearch-securityconfig-secret
