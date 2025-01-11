@@ -42,7 +42,7 @@ spec:
   selector:
     matchLabels:
       app: misskey
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
@@ -52,8 +52,6 @@ spec:
         - name: misskey
           image: misskey/misskey:2023.12.0
           env:
-            # - name: PGSSLMODE
-            #   value: require
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
