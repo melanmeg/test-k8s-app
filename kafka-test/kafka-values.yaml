@@ -45,6 +45,9 @@ sasl:
     users:
       - user1
     passwords: "testPassword123" # 仮のパスワード
+  zookeeper:
+    user: "zookeeper_user"
+    password: "testPassword123" # 仮のパスワード
   existingSecret: ""
 
 controller:
@@ -59,4 +62,7 @@ broker:
   zookeeperMigrationMode: false
 
 kraft:
+  enabled: false
+
+zookeeper:
   enabled: true
