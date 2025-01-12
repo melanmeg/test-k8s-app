@@ -6,7 +6,7 @@ metadata:
 spec:
   project: cluster-wide-apps
   source:
-    chart: bitnami/kafka
+    chart: bitnami
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 31.2.0
     helm:
