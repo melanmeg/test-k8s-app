@@ -4,4 +4,4 @@ namespace: twicas-monitoring
 resources:
   - opensearch-secret.yaml
   - service.yaml
-  - statefulset.yaml
+  - deployment.yaml
