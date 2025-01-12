@@ -7,3 +7,6 @@ resources:
   - namespace.yaml
   - rabbitmq-operator.yaml
   - rabbitmq-cluster.yaml
+
+patches:
+  - path: rabbitmq-secret.yaml
