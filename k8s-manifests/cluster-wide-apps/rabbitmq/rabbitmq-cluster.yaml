@@ -4,6 +4,3 @@ metadata:
   name: rabbitmq-cluster
 spec:
   replicas: 3
-  secretBackend:
-    externalSecret:
-      name: "rabbitmq-secret"
