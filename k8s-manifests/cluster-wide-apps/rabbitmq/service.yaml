@@ -6,9 +6,17 @@ metadata:
 spec:
   type: NodePort
   ports:
-    - port: 15672
-      targetPort: 15672
+    - appProtocol: http
+      name: management
+      port: 15672
       nodePort: 30012
       protocol: TCP
+      targetPort: 15672
+    - appProtocol: amqp
+      name: amqp
+      port: 5672
+      nodePort: 30013
+      protocol: TCP
+      targetPort: 5672
   selector:
     app.kubernetes.io/name: rabbitmq-cluster
