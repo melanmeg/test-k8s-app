@@ -8,7 +8,7 @@ spec:
   source:
     chart: kafka
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 29.3.14
+    targetRevision: 31.1.1
     helm:
       releaseName: kafka
       values: |
