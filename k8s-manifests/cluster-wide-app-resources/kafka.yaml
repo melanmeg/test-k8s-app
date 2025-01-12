@@ -6,9 +6,9 @@ metadata:
 spec:
   project: cluster-wide-apps
   source:
-    chart: bitnami/kafka
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: "latest"
+    chart: kafka
+    repoURL: oci://registry-1.docker.io/bitnamicharts
+    targetRevision: 31.2.0
     helm:
       releaseName: kafka
       values: |
