@@ -8,3 +8,5 @@ resources:
   - rabbitmq-secret.yaml
   - rabbitmq-operator.yaml
   - rabbitmq-cluster.yaml
+# patches:
+#   - path: rabbitmq-secret-patch.yaml
