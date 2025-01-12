@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: twicas-monitoring
   namespace: twicas-monitoring
@@ -38,23 +38,9 @@ spec:
             - name: LOG_DIR
               value: "/tmp/logs"
           resources:
-            limits:
-              cpu: 1000m
-              memory: 2048Mi
             requests:
               cpu: 500m
               memory: 1024Mi
-          ports:
-            - containerPort: 80
-          volumeMounts:
-            - name: twicas-monitoring-storage
-              mountPath: /data
-  volumeClaimTemplates:
-    - metadata:
-        name: twicas-monitoring-storage
-      spec:
-        accessModes: ["ReadWriteOnce"]
-        resources:
-          requests:
-            storage: 10Gi
-        storageClassName: my-longhorn-sc
+            limits:
+              cpu: 1000m
+              memory: 2048Mi
