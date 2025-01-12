@@ -11,11 +11,8 @@ kafka-console-consumer.sh \
     --consumer.config /tmp/client.properties \
     --topic test \
     --from-beginning
-```
 
-```bash
 kafka-topics.sh \
   --command-config /tmp/client.properties \
-  --bootstrap-server my-kafka.kafka.svc.cluster.local:9092 \
   --list
 ```
