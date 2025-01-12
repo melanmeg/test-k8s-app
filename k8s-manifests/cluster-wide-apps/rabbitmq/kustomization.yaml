@@ -7,3 +7,4 @@ resources:
   - namespace.yaml
   - rabbitmq-operator.yaml
   - rabbitmq-cluster.yaml
+  - service.yaml
