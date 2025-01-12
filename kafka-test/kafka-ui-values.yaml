@@ -1,0 +1,15 @@
+yamlApplicationConfig:
+  kafka:
+    clusters:
+      - name: my-cluster
+        bootstrapServers: my-kafka-0.my-kafka-headless:9092,my-kafka-1.my-kafka-headless:9092,my-kafka-2.my-kafka-headless:9092
+        properties:
+          security.protocol: SASL_PLAINTEXT
+          sasl.mechanism: PLAIN
+          sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="user1" password="testPassword123";
+  auth:
+    type: disabled
+  management:
+    health:
+      ldap:
+        enabled: false
