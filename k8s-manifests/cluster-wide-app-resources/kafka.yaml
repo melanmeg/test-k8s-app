@@ -80,6 +80,7 @@ spec:
 
         zookeeper:
           enabled: true
+          replicaCount: 3
   destination:
     server: "https://kubernetes.default.svc"
     namespace: kafka
