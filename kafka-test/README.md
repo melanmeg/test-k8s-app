@@ -4,15 +4,18 @@ kubectl cp --namespace kafka client.properties kafka-client:/tmp/client.properti
 kubectl exec --tty -i kafka-client --namespace kafka -- bash
 
 kafka-console-producer.sh \
-    --producer.config /tmp/client.properties \
-    --topic test
+  --producer.config /tmp/client.properties \
+  --bootstrap-server kafka.kafka:9092 \
+  --topic test
 
 kafka-console-consumer.sh \
-    --consumer.config /tmp/client.properties \
-    --topic test \
-    --from-beginning
+  --consumer.config /tmp/client.properties \
+  --bootstrap-server kafka.kafka:9092 \
+  --topic test \
+  --from-beginning
 
 kafka-topics.sh \
   --command-config /tmp/client.properties \
+  --bootstrap-server kafka.kafka:9092 \
   --list
 ```
