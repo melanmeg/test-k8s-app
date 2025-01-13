@@ -56,5 +56,5 @@ spec:
               - key: app.kubernetes.io/name
                 operator: In
                 values:
-                  - rabbitmq-cluster
+                  - twicas-monitoring
           topologyKey: kubernetes.io/hostname
