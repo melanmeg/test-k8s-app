@@ -8,7 +8,7 @@ spec:
     kind: Deployment # Optional. Default: Deployment
     name: twicas-monitoring # Mandatory. Must be in the same namespace as the ScaledObject
   pollingInterval: 5 # Optional. Default: 30 seconds
-  cooldownPeriod: 300 # Optional. Default: 300 seconds
+  cooldownPeriod: 30 # Optional. Default: 300 seconds
   idleReplicaCount: 0 # Optional. Default: ignored, must be less than minReplicaCount
   minReplicaCount: 0 # Optional. Default: 0
   maxReplicaCount: 100 # Optional. Default: 100
@@ -20,7 +20,7 @@ spec:
       name: keda-hpa-twicas-monitoring-scaler # Optional. Default: keda-hpa-{scaled-object-name}
       behavior: # Optional. Use to modify HPA's scaling behavior
         scaleDown:
-          stabilizationWindowSeconds: 300
+          stabilizationWindowSeconds: 30
           policies:
             - type: Percent
               value: 100
