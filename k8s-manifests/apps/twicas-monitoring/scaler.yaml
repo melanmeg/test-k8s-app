@@ -1,30 +1,30 @@
 apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
+kind: ScaledJob
 metadata:
   name: twicas-monitoring-scaler
 spec:
-  scaleTargetRef:
-    apiVersion: batch/v1 # Optional. Default: apps/v1
-    kind: Job # Optional. Default: Deployment
-    name: twicas-monitoring # Mandatory. Must be in the same namespace as the ScaledObject
-  pollingInterval: 10 # Optional. Default: 30 seconds
-  cooldownPeriod: 120 # Optional. Default: 300 seconds
-  idleReplicaCount: 0 # Optional. Default: ignored, must be less than minReplicaCount
-  minReplicaCount: 0 # Optional. Default: 0
-  maxReplicaCount: 100 # Optional. Default: 100
-  fallback: # Optional. Section to specify fallback options
-    failureThreshold: 3 # Mandatory if fallback section is included
-    replicas: 6 # Mandatory if fallback section is included
-  advanced: # Optional. Section to specify advanced options
-    horizontalPodAutoscalerConfig: # Optional. Section to specify HPA related options
-      name: keda-hpa-twicas-monitoring-scaler # Optional. Default: keda-hpa-{scaled-object-name}
-      behavior: # Optional. Use to modify HPA's scaling behavior
-        scaleDown:
-          stabilizationWindowSeconds: 120
-          policies:
-            - type: Percent
-              value: 100
-              periodSeconds: 15
+  jobTargetRef:
+    parallelism: 1
+    completions: 1
+    activeDeadlineSeconds: 15000 # 4時間 + 10分
+    backoffLimit: 3
+    template:
+      spec:
+        containers:
+          - name: twicas-monitoring-container
+  envSourceContainerName: twicas-monitoring-container
+  pollingInterval: 10
+  successfulJobsHistoryLimit: 30
+  failedJobsHistoryLimit: 30
+  minReplicaCount: 0
+  maxReplicaCount: 100
+  rolloutStrategy: gradual
+  rollout:
+    strategy: gradual
+    propagationPolicy: foreground
+  scalingStrategy:
+    strategy: "default"
+    multipleScalersCalculation: "max"
   triggers:
     - type: rabbitmq
       metadata:
