@@ -9,5 +9,5 @@ spec:
       containers:
         - name: example-job-container
           image: busybox # 実行するコンテナのイメージ
-          command: ["/bin/sh", "-c", "echo 'Processing job...' && sleep 30"] # ジョブの実行内容
+          command: ["/bin/sh", "-c", "echo 'Processing job...' && sleep 10"] # ジョブの実行内容
       restartPolicy: Never
