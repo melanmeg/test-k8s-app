@@ -23,8 +23,7 @@ spec:
     strategy: gradual
     propagationPolicy: foreground
   scalingStrategy:
-    strategy: "default"
-    multipleScalersCalculation: "max"
+    strategy: accurate
   triggers:
     - type: rabbitmq
       metadata:
