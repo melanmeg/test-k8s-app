@@ -4,8 +4,8 @@ metadata:
   name: twicas-monitoring-scaler
 spec:
   scaleTargetRef:
-    apiVersion: apps/v1 # Optional. Default: apps/v1
-    kind: Deployment # Optional. Default: Deployment
+    apiVersion: batch/v1 # Optional. Default: apps/v1
+    kind: Job # Optional. Default: Deployment
     name: twicas-monitoring # Mandatory. Must be in the same namespace as the ScaledObject
   pollingInterval: 10 # Optional. Default: 30 seconds
   cooldownPeriod: 120 # Optional. Default: 300 seconds
