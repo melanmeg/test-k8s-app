@@ -12,7 +12,7 @@ spec:
         containers:
           - name: example-job-container
   envSourceContainerName: example-job-container
-  pollingInterval: 30
+  pollingInterval: 5
   minReplicaCount: 0
   maxReplicaCount: 100
   successfulJobsHistoryLimit: 0
