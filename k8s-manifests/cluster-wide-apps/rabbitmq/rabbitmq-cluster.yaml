@@ -4,3 +4,10 @@ metadata:
   name: rabbitmq-cluster
 spec:
   replicas: 3
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: node-role.kubernetes.io/worker
+                operator: Exists
