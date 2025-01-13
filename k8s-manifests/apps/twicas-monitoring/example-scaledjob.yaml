@@ -18,17 +18,8 @@ spec:
   maxReplicaCount: 100
   successfulJobsHistoryLimit: 0
   failedJobsHistoryLimit: 0
-  advanced:
-    horizontalPodAutoscalerConfig:
-      resourceMetrics:
-        - name: cpu # Name of the metric to scale on
-          target:
-            type: utilization
-            averageUtilization: 1
-        - name: memory
-          target:
-            type: utilization
-            averageUtilization: 1
+  scalingStrategy:
+    strategy: accurate
   triggers:
     - type: rabbitmq
       metadata:
