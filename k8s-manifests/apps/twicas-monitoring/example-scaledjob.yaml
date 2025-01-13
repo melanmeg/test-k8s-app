@@ -4,8 +4,8 @@ metadata:
   name: example-scaledjob
 spec:
   jobTargetRef:
-    parallelism: 1
-    completions: 1
+    parallelism: 3 # 同時に実行するジョブの数
+    completions: 5 # 完了すべきジョブの総数
     backoffLimit: 2
     template:
       spec:
@@ -15,8 +15,8 @@ spec:
   pollingInterval: 5
   minReplicaCount: 0
   maxReplicaCount: 100
-  successfulJobsHistoryLimit: 0
-  failedJobsHistoryLimit: 0
+  successfulJobsHistoryLimit: 3 # 成功したジョブの履歴を3つ保持
+  failedJobsHistoryLimit: 3 # 失敗したジョブの履歴を3つ保持
   scalingStrategy:
     strategy: accurate
   triggers:
