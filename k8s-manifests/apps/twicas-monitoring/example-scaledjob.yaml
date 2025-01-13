@@ -2,10 +2,13 @@ apiVersion: keda.sh/v1alpha1
 kind: ScaledJob
 metadata:
   name: example-scaledjob
-  namespace: default
 spec:
-  scaleTargetRef:
-    name: example-job # スケールする対象のジョブ名
+  jobTargetRef:
+    template:
+      spec:
+        containers:
+          - name: example-job-container
+  envSourceContainerName: example-job-container
   triggers:
     - type: rabbitmq
       metadata:
