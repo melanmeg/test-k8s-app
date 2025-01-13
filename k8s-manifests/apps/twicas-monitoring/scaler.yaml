@@ -8,7 +8,7 @@ spec:
     kind: Deployment
     name: twicas-monitoring
   pollingInterval: 10 # ポーリング間隔
-  cooldownPeriod: 120 # スケーリング後のクールダウン期間
+  cooldownPeriod: 120 # リソースを0にスケールバックする前に、最後のトリガーがアクティブであると報告されてから待機する期間
   idleReplicaCount: 0 # アイドル時のレプリカ数
   minReplicaCount: 0 # 最小レプリカ数
   maxReplicaCount: 100 # 最大レプリカ数
@@ -18,13 +18,6 @@ spec:
   advanced:
     horizontalPodAutoscalerConfig:
       name: keda-hpa-twicas-monitoring-scaler
-      behavior:
-        scaleDown:
-          stabilizationWindowSeconds: 120 # スケールダウンの安定化ウィンドウ
-          policies:
-            - type: Percent
-              value: 100
-              periodSeconds: 15
   triggers:
     - type: rabbitmq
       metadata:
