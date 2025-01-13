@@ -8,6 +8,6 @@ spec:
     spec:
       containers:
         - name: example-job-container
-          image: my-image:latest # 実行するコンテナのイメージ
+          image: busybox # 実行するコンテナのイメージ
           command: ["/bin/sh", "-c", "echo 'Processing job...' && sleep 30"] # ジョブの実行内容
       restartPolicy: Never
