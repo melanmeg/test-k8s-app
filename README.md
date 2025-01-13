@@ -76,4 +76,8 @@ $ get_rabbitmq_password.sh
 # ログインして、以下ユーザー作成
 # ユーザー：admin
 # パスワード：admin
+# タグ：administrator
+# 仮想ホスト：/
+# トピック権限：/
+
 ```
