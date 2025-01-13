@@ -13,7 +13,6 @@ spec:
           - name: example-job-container
   envSourceContainerName: example-job-container
   pollingInterval: 30
-  cooldownPeriod: 30
   minReplicaCount: 0
   maxReplicaCount: 100
   successfulJobsHistoryLimit: 0
