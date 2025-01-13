@@ -7,3 +7,4 @@ resources:
   - opensearch-secret.yaml
   - service.yaml
   - deployment.yaml
+  - scaler.yaml

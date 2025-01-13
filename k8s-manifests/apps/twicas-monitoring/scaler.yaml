@@ -1,0 +1,41 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: twicas-monitoring-scaler
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1 # Optional. Default: apps/v1
+    kind: Deployment # Optional. Default: Deployment
+    name: twicas-monitoring # Mandatory. Must be in the same namespace as the ScaledObject
+    envSourceContainerName: .spec.template.spec.containers[0] # Optional. Default: .spec.template.spec.containers[0]
+  pollingInterval: 5 # Optional. Default: 30 seconds
+  initialCooldownPeriod: 0 # Optional. Default: 0 seconds
+  cooldownPeriod: 300 # Optional. Default: 300 seconds
+  idleReplicaCount: 0 # Optional. Default: ignored, must be less than minReplicaCount
+  minReplicaCount: 0 # Optional. Default: 0
+  maxReplicaCount: 100 # Optional. Default: 100
+  fallback: # Optional. Section to specify fallback options
+    failureThreshold: 3 # Mandatory if fallback section is included
+    replicas: 6 # Mandatory if fallback section is included
+  advanced: # Optional. Section to specify advanced options
+    restoreToOriginalReplicaCount: false # Optional. Default: false
+    horizontalPodAutoscalerConfig: # Optional. Section to specify HPA related options
+      name: keda-hpa-twicas-monitoring-scaler # Optional. Default: keda-hpa-{scaled-object-name}
+      behavior: # Optional. Use to modify HPA's scaling behavior
+        scaleDown:
+          stabilizationWindowSeconds: 300
+          policies:
+            - type: Percent
+              value: 100
+              periodSeconds: 15
+  triggers:
+    - type: rabbitmq
+      metadata:
+        host: amqp://admin:admin@rabbitmq-cluster.rabbitmq:5672/
+        protocol: auto
+        mode: QueueLength # キュー内のメッセージ数でスケーリング
+        value: "1" # キューに1メッセージが追加されるごとに Pod を1つ増加させる
+        activationValue: "1" # 初期のアクティベーション値
+        queueName: my_queue
+        vhostName: /
+        unsafeSsl: true
