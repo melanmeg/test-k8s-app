@@ -68,3 +68,12 @@ $ kubectl apply -f cloudflared.yaml
 - ブラウザからトンネルの移行を実施する
 
 - パブリックホストの設定は、ブラウザからのみ
+
+## rabbitmq
+```bash
+$ get_rabbitmq_password.sh
+# http://192.168.11.161:8090/
+# ログインして、以下ユーザー作成
+# ユーザー：admin
+# パスワード：admin
+```
