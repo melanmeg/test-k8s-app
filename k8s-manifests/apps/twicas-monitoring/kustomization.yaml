@@ -9,5 +9,3 @@ resources:
   - twicas-monitoring.yaml
   - publisher.yaml
   - scaler.yaml
-  - example-job.yaml
-  - example-scaledjob.yaml

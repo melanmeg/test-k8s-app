@@ -1,10 +1,13 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: twicas-monitoring
   labels:
     app: twicas-monitoring
 spec:
+  selector:
+    matchLabels:
+      app: twicas-monitoring
   template:
     metadata:
       labels:
@@ -38,5 +41,3 @@ spec:
             limits:
               cpu: "1"
               memory: 2Gi
-      restartPolicy: Never
-  ttlSecondsAfterFinished: 600
