@@ -6,5 +6,6 @@ namespace: twicas-monitoring
 resources:
   - opensearch-secret.yaml
   - service.yaml
-  - deployment.yaml
+  - twicas-monitoring.yaml
+  - publisher.yaml
   - scaler.yaml
