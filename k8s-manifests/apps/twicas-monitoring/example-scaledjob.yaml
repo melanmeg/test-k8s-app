@@ -4,13 +4,31 @@ metadata:
   name: example-scaledjob
 spec:
   jobTargetRef:
+    parallelism: 1
+    completions: 1
+    backoffLimit: 2
     template:
       spec:
         containers:
           - name: example-job-container
   envSourceContainerName: example-job-container
-  successfulJobsHistoryLimit: 2 # 完了したジョブの履歴の保持数
-  failedJobsHistoryLimit: 2 # 失敗したジョブの履歴の保持数
+  pollingInterval: 30
+  cooldownPeriod: 30
+  minReplicaCount: 0
+  maxReplicaCount: 100
+  successfulJobsHistoryLimit: 0
+  failedJobsHistoryLimit: 0
+  advanced:
+    horizontalPodAutoscalerConfig:
+      resourceMetrics:
+        - name: cpu # Name of the metric to scale on
+          target:
+            type: utilization
+            averageUtilization: 1
+        - name: memory
+          target:
+            type: utilization
+            averageUtilization: 1
   triggers:
     - type: rabbitmq
       metadata:
