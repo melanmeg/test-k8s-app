@@ -9,11 +9,16 @@ spec:
         containers:
           - name: example-job-container
   envSourceContainerName: example-job-container
+  successfulJobsHistoryLimit: 2 # 完了したジョブの履歴の保持数
+  failedJobsHistoryLimit: 2 # 失敗したジョブの履歴の保持数
   triggers:
     - type: rabbitmq
       metadata:
-        queueName: "my-queue" # スケーリングに使用するRabbitMQのキュー名
-        host: "amqp://guest:guest@rabbitmq.default.svc.cluster.local" # RabbitMQホストのURL
-        queueLength: "5" # キューの長さが5を超えた場合にスケールする
-  successfulJobsHistoryLimit: 2 # 完了したジョブの履歴の保持数
-  failedJobsHistoryLimit: 2 # 失敗したジョブの履歴の保持数
+        host: amqp://admin:admin@rabbitmq-cluster.rabbitmq:5672/
+        protocol: auto
+        mode: QueueLength # キュー内のメッセージ数でスケーリング
+        value: "1" # キューに1メッセージが追加されるごとに Pod を1つ増加させる
+        activationValue: "1" # 初期のアクティベーション値
+        queueName: my_queue
+        vhostName: /
+        unsafeSsl: "true"
