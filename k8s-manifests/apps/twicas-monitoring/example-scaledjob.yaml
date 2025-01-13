@@ -1,0 +1,16 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledJob
+metadata:
+  name: example-scaledjob
+  namespace: default
+spec:
+  scaleTargetRef:
+    name: example-job # スケールする対象のジョブ名
+  triggers:
+    - type: rabbitmq
+      metadata:
+        queueName: "my-queue" # スケーリングに使用するRabbitMQのキュー名
+        host: "amqp://guest:guest@rabbitmq.default.svc.cluster.local" # RabbitMQホストのURL
+        queueLength: "5" # キューの長さが5を超えた場合にスケールする
+  successfulJobsHistoryLimit: 2 # 完了したジョブの履歴の保持数
+  failedJobsHistoryLimit: 2 # 失敗したジョブの履歴の保持数
