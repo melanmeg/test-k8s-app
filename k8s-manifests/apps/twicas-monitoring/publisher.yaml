@@ -13,16 +13,16 @@ spec:
       labels:
         app: publisher
     spec:
-      terminationGracePeriodSeconds: 15000 # 4時間 + 10分
       containers:
         - name: publisher-container
           image: node:20
           ports:
             - containerPort: 3000
-          command: ["sh", "-c"]
+          command: ["node"]
           args:
             [
-              "(echo 'Hello'; for i in $(seq 1 180); do echo $i; sleep 1; done; echo 'Sending SIGTERM'; kill -s SIGTERM 1)",
+              "-e",
+              "require('http').createServer((_, res) => res.end('Hello!')).listen(3000)",
             ]
           resources:
             limits:
