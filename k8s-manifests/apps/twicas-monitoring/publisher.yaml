@@ -19,11 +19,10 @@ spec:
           image: node:20
           ports:
             - containerPort: 3000
-          command: ["node"]
+          command: ["sh", "-c"]
           args:
             [
-              "-e",
-              "require('http').createServer((req, res) => res.end('Hello, Kubernetes!')).listen(3000);",
+              'trap ''exit 0'' SIGTERM; require() { node -e "$1"; }; require "require(''http'').createServer((req, res) => res.end(''Hello, Kubernetes!'')).listen(3000);" &; sleep 10; kill -s SIGTERM $!; wait',
             ]
           resources:
             limits:
