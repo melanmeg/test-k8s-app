@@ -13,6 +13,7 @@ spec:
       labels:
         app: publisher
     spec:
+      restartPolicy: Never
       containers:
         - name: publisher-container
           image: node:20
