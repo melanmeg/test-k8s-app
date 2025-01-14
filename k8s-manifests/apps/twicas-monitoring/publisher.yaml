@@ -13,7 +13,7 @@ spec:
       labels:
         app: publisher
     spec:
-      terminationGracePeriodSeconds: 15000
+      # terminationGracePeriodSeconds: 15000
       containers:
         - name: publisher-container
           image: node:20
