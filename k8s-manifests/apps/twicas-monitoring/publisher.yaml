@@ -13,7 +13,7 @@ spec:
       labels:
         app: publisher
     spec:
-      terminationGracePeriodSeconds: 15000
+      terminationGracePeriodSeconds: 15000 # 4時間 + 10分
       containers:
         - name: publisher-container
           image: node:20
@@ -22,7 +22,7 @@ spec:
           command: ["sh", "-c"]
           args:
             [
-              "echo 'Hello'; sleep 10; echo 'Sending SIGTERM'; kill -s SIGTERM 1",
+              "echo 'Hello'; sleep 180; echo 'Sending SIGTERM'; kill -s SIGTERM 1",
             ]
           resources:
             limits:
