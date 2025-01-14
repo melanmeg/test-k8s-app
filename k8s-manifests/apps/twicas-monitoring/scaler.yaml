@@ -7,8 +7,8 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: publisher
-  pollingInterval: 10 # ポーリング間隔
-  cooldownPeriod: 120 # リソースを0にスケールバックする前に、最後のトリガーがアクティブであると報告されてから待機する期間
+  pollingInterval: 5 # ポーリング間隔
+  cooldownPeriod: 30 # リソースを0にスケールバックする前に、最後のトリガーがアクティブであると報告されてから待機する期間
   idleReplicaCount: 0 # アイドル時のレプリカ数
   minReplicaCount: 0 # 最小レプリカ数
   maxReplicaCount: 100 # 最大レプリカ数
@@ -18,6 +18,13 @@ spec:
   advanced:
     horizontalPodAutoscalerConfig:
       name: keda-hpa-twicas-monitoring-scaler
+      behavior:
+        scaleDown:
+          stabilizationWindowSeconds: 30
+          policies:
+            - type: Percent
+              value: 100
+              periodSeconds: 15
   triggers:
     - type: rabbitmq
       metadata:
