@@ -1,30 +1,29 @@
 apiVersion: keda.sh/v1alpha1
-kind: ScaledObject
+kind: ScaledJob
 metadata:
   name: twicas-monitoring-scaler
 spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: publisher
-  pollingInterval: 5 # ポーリング間隔
-  cooldownPeriod: 30 # リソースを0にスケールバックする前に、最後のトリガーがアクティブであると報告されてから待機する期間
-  idleReplicaCount: 0 # アイドル時のレプリカ数
-  minReplicaCount: 0 # 最小レプリカ数
-  maxReplicaCount: 100 # 最大レプリカ数
-  fallback:
-    failureThreshold: 3
-    replicas: 3
-  advanced:
-    horizontalPodAutoscalerConfig:
-      name: keda-hpa-twicas-monitoring-scaler
-      # behavior:
-      #   scaleDown:
-      #     stabilizationWindowSeconds: 30
-      #     policies:
-      #       - type: Percent
-      #         value: 100
-      #         periodSeconds: 5
+  jobTargetRef:
+    parallelism: 100
+    completions: 100
+    activeDeadlineSeconds: 15000 # 4時間 + 10分
+    backoffLimit: 3
+    template:
+      spec:
+        containers:
+          - name: twicas-monitoring-container
+  envSourceContainerName: twicas-monitoring-container
+  pollingInterval: 10
+  successfulJobsHistoryLimit: 30
+  failedJobsHistoryLimit: 30
+  minReplicaCount: 0
+  maxReplicaCount: 100
+  rolloutStrategy: gradual
+  rollout:
+    strategy: gradual
+    propagationPolicy: foreground
+  scalingStrategy:
+    strategy: accurate
   triggers:
     - type: rabbitmq
       metadata:

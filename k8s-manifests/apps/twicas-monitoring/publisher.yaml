@@ -1,13 +1,13 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   name: publisher
   labels:
     app: publisher
 spec:
-  selector:
-    matchLabels:
-      app: publisher
+  # selector:
+  #   matchLabels:
+  #     app: publisher
   template:
     metadata:
       labels:
