@@ -7,8 +7,8 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: twicas-monitoring-scaler
-  pollingInterval: 5 # ポーリング間隔
-  cooldownPeriod: 30 # リソースを0にスケールバックする前に、最後のトリガーがアクティブであると報告されてから待機する期間
+  pollingInterval: 10 # ポーリング間隔
+  cooldownPeriod: 60 # リソースを0にスケールバックする前に、最後のトリガーがアクティブであると報告されてから待機する期間
   idleReplicaCount: 0 # アイドル時のレプリカ数
   minReplicaCount: 0 # 最小レプリカ数
   maxReplicaCount: 100 # 最大レプリカ数
@@ -21,7 +21,7 @@ spec:
       # スケールダウンさせる時の設定
       behavior:
         scaleDown:
-          stabilizationWindowSeconds: 30
+          stabilizationWindowSeconds: 60
           policies:
             - type: Percent
               value: 100

@@ -9,3 +9,4 @@ resources:
   - twicas-monitoring.yaml
   - publisher.yaml
   - scaler.yaml
+  # - test-sigterm.yaml
