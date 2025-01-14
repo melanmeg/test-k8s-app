@@ -22,7 +22,7 @@ spec:
           command: ["sh", "-c"]
           args:
             [
-              "echo 'Hello'; sleep 180; echo 'Sending SIGTERM'; kill -s SIGTERM 1",
+              "(echo 'Hello'; for i in $(seq 1 180); do echo $i; sleep 1; done; echo 'Sending SIGTERM'; kill -s SIGTERM 1)",
             ]
           resources:
             limits:
