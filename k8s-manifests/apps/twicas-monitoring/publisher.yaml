@@ -1,19 +1,19 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: publisher
   labels:
     app: publisher
 spec:
-  # selector:
-  #   matchLabels:
-  #     app: publisher
+  selector:
+    matchLabels:
+      app: publisher
   template:
     metadata:
       labels:
         app: publisher
     spec:
-      # terminationGracePeriodSeconds: 15000
+      terminationGracePeriodSeconds: 15000
       containers:
         - name: publisher-container
           image: node:20
