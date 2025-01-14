@@ -1,7 +1,7 @@
 apiVersion: keda.sh/v1alpha1
 kind: ScaledJob
 metadata:
-  name: twicas-monitoring-scaler
+  name: publisher-scaler
 spec:
   jobTargetRef:
     parallelism: 100
@@ -11,8 +11,8 @@ spec:
     template:
       spec:
         containers:
-          - name: twicas-monitoring-container
-  envSourceContainerName: twicas-monitoring-container
+          - name: publisher-container
+  envSourceContainerName: publisher-container
   pollingInterval: 10
   successfulJobsHistoryLimit: 30
   failedJobsHistoryLimit: 30
