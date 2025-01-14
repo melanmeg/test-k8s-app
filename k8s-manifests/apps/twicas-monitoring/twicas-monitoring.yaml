@@ -18,6 +18,7 @@ spec:
         - name: twicas-monitoring-container
           image: melanmeg/twicas-monitoring:1.0.0
           command: ["node", "run", "start"]
+          workingDir: /app
           env:
             - name: OPENSEARCH_URL
               value: "https://my-cluster.opensearch:9200"
