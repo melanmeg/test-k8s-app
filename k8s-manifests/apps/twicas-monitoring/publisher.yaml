@@ -5,6 +5,7 @@ metadata:
   labels:
     app: publisher
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: publisher
