@@ -6,7 +6,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: twicas-monitoring
+    name: publisher
   pollingInterval: 10 # ポーリング間隔
   cooldownPeriod: 120 # リソースを0にスケールバックする前に、最後のトリガーがアクティブであると報告されてから待機する期間
   idleReplicaCount: 0 # アイドル時のレプリカ数
