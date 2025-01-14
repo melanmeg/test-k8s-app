@@ -22,7 +22,7 @@ spec:
           command: ["sh", "-c"]
           args:
             [
-              'trap ''exit 0'' SIGTERM; require() { node -e "$1"; }; require "require(''http'').createServer((req, res) => res.end(''Hello, Kubernetes!'')).listen(3000);" &; sleep 10; kill -s SIGTERM $!; wait',
+              "echo 'Hello'; sleep 10; echo 'Sending SIGTERM'; kill -s SIGTERM 1",
             ]
           resources:
             limits:
