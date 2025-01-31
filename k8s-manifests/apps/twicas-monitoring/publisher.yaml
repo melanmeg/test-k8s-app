@@ -22,13 +22,13 @@ spec:
             - name: RABBITMQ_URL
               value: "https://rabbitmq-cluster.rabbitmq"
             - name: RABBITMQ_PORT
-              value: admin
+              value: "5672"
             - name: RABBITMQ_USER
               value: admin
             - name: RABBITMQ_PASSWORD
               value: admin
             - name: PORT_NUM
-              value: "5672"
+              value: "18080"
           resources:
             limits:
               memory: "512Mi"
