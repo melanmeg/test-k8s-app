@@ -13,7 +13,7 @@ spec:
       labels:
         app: twicas-monitoring
     spec:
-      terminationGracePeriodSeconds: 15000 # 4 hours and 10 minutes
+      # terminationGracePeriodSeconds: 15000 # 4 hours and 10 minutes
       containers:
         - name: twicas-monitoring-container
           image: melanmeg/twicas-monitoring:latest
