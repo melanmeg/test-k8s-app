@@ -16,7 +16,7 @@ spec:
       terminationGracePeriodSeconds: 15000 # 4 hours and 10 minutes
       containers:
         - name: twicas-monitoring-container
-          image: melanmeg/twicas-monitoring:1.0.0
+          image: melanmeg/twicas-monitoring:latest
           command: ["node", "/app/dist/main.js"]
           env:
             - name: OPENSEARCH_URL
