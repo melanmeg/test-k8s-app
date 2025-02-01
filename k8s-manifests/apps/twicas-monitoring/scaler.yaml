@@ -10,8 +10,8 @@ spec:
     envSourceContainerName: twicas-monitoring-container
   pollingInterval: 5 # ポーリング間隔
   cooldownPeriod: 60 # リソースを0にスケールバックする前に、最後のトリガーがアクティブであると報告されてから待機する期間
-  idleReplicaCount: 0 # アイドル時のレプリカ数
-  minReplicaCount: 0 # 最小レプリカ数
+  idleReplicaCount: 1 # アイドル時のレプリカ数
+  minReplicaCount: 1 # 最小レプリカ数
   maxReplicaCount: 100 # 最大レプリカ数
   fallback:
     failureThreshold: 3
@@ -33,8 +33,8 @@ spec:
         host: http://admin:admin@rabbitmq-cluster.rabbitmq:15672/
         protocol: auto
         mode: QueueLength # キュー内のメッセージ数でスケーリング
-        value: "0.99" # キューに1メッセージが追加されるごとに Pod を1つ増加させる
-        activationValue: "0.99" # 初期のアクティベーション値
+        value: "1" # キューに1メッセージが追加されるごとに Pod を1つ増加させる
+        activationValue: "1" # 初期のアクティベーション値
         queueName: my_queue
         vhostName: /
         unsafeSsl: "true"
