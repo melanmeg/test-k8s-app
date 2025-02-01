@@ -22,6 +22,8 @@ spec:
       http:
         generate: true
   dashboards:
+    additionalConfig:
+      opensearch_security.multitenancy.enabled: "true"
     opensearchCredentialsSecret:
       name: opensearch-secret
     version: 2.14.0
