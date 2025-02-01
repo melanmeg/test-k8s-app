@@ -38,4 +38,4 @@ spec:
         queueName: my_queue
         vhostName: /
         unsafeSsl: "true"
-        excludeUnacknowledged: "true"
+        excludeUnacknowledged: "false"
