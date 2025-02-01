@@ -8,10 +8,10 @@ spec:
     kind: Deployment
     name: twicas-monitoring
     envSourceContainerName: twicas-monitoring-container
-  pollingInterval: 5 # ポーリング間隔
-  cooldownPeriod: 60 # リソースを0にスケールバックする前に、最後のトリガーがアクティブであると報告されてから待機する期間
+  pollingInterval: 10 # ポーリング間隔
+  cooldownPeriod: 180 # リソースを0にスケールバックする前に、最後のトリガーがアクティブであると報告されてから待機する期間
   idleReplicaCount: 0 # アイドル時のレプリカ数
-  minReplicaCount: 2 # 最小レプリカ数
+  minReplicaCount: 10 # 最小レプリカ数
   maxReplicaCount: 100 # 最大レプリカ数
   fallback:
     failureThreshold: 3
@@ -22,11 +22,11 @@ spec:
       # スケールダウンさせる時の設定
       behavior:
         scaleDown:
-          stabilizationWindowSeconds: 60
+          stabilizationWindowSeconds: 180
           policies:
             - type: Percent
               value: 100
-              periodSeconds: 5
+              periodSeconds: 10
   triggers:
     - type: rabbitmq
       metadata:
