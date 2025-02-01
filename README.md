@@ -79,5 +79,7 @@ $ get_rabbitmq_password.sh
 # タグ：administrator
 # 仮想ホスト：/
 # トピック権限：/
-
 ```
+
+# opensearch
+- Create index pattern: `*-index`
