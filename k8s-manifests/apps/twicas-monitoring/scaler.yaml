@@ -30,7 +30,7 @@ spec:
   triggers:
     - type: rabbitmq
       metadata:
-        host: amqp://admin:admin@rabbitmq-cluster.rabbitmq:5672/
+        host: http://admin:admin@rabbitmq-cluster.rabbitmq:15672/
         protocol: auto
         mode: QueueLength # キュー内のメッセージ数でスケーリング
         value: "1" # キューに1メッセージが追加されるごとに Pod を1つ増加させる
