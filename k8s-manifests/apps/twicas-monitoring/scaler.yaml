@@ -11,7 +11,7 @@ spec:
   pollingInterval: 10 # ポーリング間隔
   cooldownPeriod: 180 # リソースを0にスケールバックする前に、最後のトリガーがアクティブであると報告されてから待機する期間
   idleReplicaCount: 0 # アイドル時のレプリカ数
-  minReplicaCount: 3 # 最小レプリカ数
+  minReplicaCount: 2 # 最小レプリカ数
   maxReplicaCount: 100 # 最大レプリカ数
   fallback:
     failureThreshold: 3
